@@ -1,14 +1,12 @@
 .container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
 }
 
 header h1 {
@@ -17,24 +15,22 @@ header h1 {
 }
 
 .last-updated {
-   color: #666;
-   font-size: 14px;
-   margin: 0;
-   transition: color 0.3s ease;
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
 .last-updated.stale {
-   color: #ff9800;
-   font-weight: 500;
+  color: #ff9800;
+  font-weight: 500;
 }
 
 .filters-sidebar {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 300px;
-  margin-bottom: 20px;
-  align-self: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
 }
 
 footer {
@@ -60,6 +56,6 @@ footer {
   .filters-sidebar {
     width: 100%;
     max-width: 100%;
+    flex-direction: column;
   }
 }
-

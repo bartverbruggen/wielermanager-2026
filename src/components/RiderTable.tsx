@@ -5,70 +5,79 @@ import {
   ColumnDef,
   flexRender,
   SortingState,
-} from '@tanstack/react-table'
-import { useState, useMemo } from 'react'
-import './RiderTable.css'
+} from "@tanstack/react-table";
+import { useState, useMemo } from "react";
+import "./RiderTable.css";
 
 interface Rider {
-  name: string
-  team: string
-  price: number
-  url: string
-  uci_rank: number
-  uci_pts: number
-  races: string[]
-  [key: string]: unknown
+  name: string;
+  team: string;
+  price: number;
+  url: string;
+  uci_rank: number;
+  uci_pts: number;
+  races: string[];
+  [key: string]: unknown;
 }
 
 interface RiderTableProps {
-  riders: Rider[]
-  allRaces: string[]
-  selectedRaces: Set<string>
+  riders: Rider[];
+  allRaces: string[];
+  selectedRaces: Set<string>;
 }
 
-export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTableProps) {
-  const [sorting, setSorting] = useState<SortingState>([])
+export default function RiderTable({
+  riders,
+  allRaces,
+  selectedRaces,
+}: RiderTableProps) {
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const columns = useMemo<ColumnDef<Rider>[]>(() => {
     const baseColumns: ColumnDef<Rider>[] = [
       {
-        accessorKey: 'name',
-        header: 'Rider',
+        accessorKey: "name",
+        header: "Rider",
         cell: (info) => {
-          const rider = info.row.original
+          const rider = info.row.original;
           return (
-            <a href={rider.url} target="_blank" rel="noopener noreferrer" className="rider-link">
+            <a
+              href={rider.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rider-link"
+            >
               {info.getValue<string>()}
             </a>
-          )
+          );
         },
         size: 200,
       },
       {
-        accessorKey: 'team',
-        header: 'Team',
+        accessorKey: "team",
+        header: "Team",
         size: 200,
       },
       {
-        accessorKey: 'uci_rank',
-        header: 'UCI Rank',
+        accessorKey: "uci_rank",
+        header: "UCI Rank",
         size: 80,
       },
       {
-        accessorKey: 'price',
-        header: 'Price',
+        accessorKey: "price",
+        header: "Price",
         size: 80,
-        cell: (info) => `€${info.getValue<number>()}`,
+        cell: (info) => `${info.getValue<number>()}M`,
       },
-    ]
+    ];
 
     // Add race columns
     const raceColumns: ColumnDef<Rider>[] = allRaces.map((race) => ({
       accessorKey: race,
       header: race,
       cell: (info) => {
-        const rider = info.row.original
-        const isRiding = rider.races?.includes(race)
+        const rider = info.row.original;
+        const isRiding = rider.races?.includes(race);
         return (
           <div className="race-cell">
             <input
@@ -76,16 +85,16 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
               checked={isRiding || false}
               readOnly
               disabled
-              className={isRiding ? 'checked' : ''}
+              className={isRiding ? "checked" : ""}
             />
           </div>
-        )
+        );
       },
       size: 60,
-    }))
+    }));
 
-    return [...baseColumns, ...raceColumns]
-  }, [allRaces])
+    return [...baseColumns, ...raceColumns];
+  }, [allRaces]);
 
   const table = useReactTable({
     data: riders,
@@ -96,7 +105,7 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  })
+  });
 
   if (riders.length === 0) {
     return (
@@ -105,7 +114,7 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
           <p>No riders match the selected races.</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -116,15 +125,15 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
-                  const isSorted = header.column.getIsSorted()
+                  const isSorted = header.column.getIsSorted();
                   return (
                     <th
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
                       style={{ width: header.getSize() }}
                       className={`${
-                        header.column.getCanSort() ? 'sortable' : ''
-                      } ${isSorted ? `sorted-${isSorted}` : ''}`}
+                        header.column.getCanSort() ? "sortable" : ""
+                      } ${isSorted ? `sorted-${isSorted}` : ""}`}
                     >
                       <div className="header-content">
                         {flexRender(
@@ -133,16 +142,16 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
                         )}
                         {header.column.getCanSort() && (
                           <span className="sort-indicator">
-                            {isSorted === 'asc'
-                              ? ' ⬆'
-                              : isSorted === 'desc'
-                                ? ' ⬇'
-                                : ' ⬍'}
+                            {isSorted === "asc"
+                              ? " ⬆"
+                              : isSorted === "desc"
+                                ? " ⬇"
+                                : " ⬍"}
                           </span>
                         )}
                       </div>
                     </th>
-                  )
+                  );
                 })}
               </tr>
             ))}
@@ -161,5 +170,5 @@ export default function RiderTable({ riders, allRaces, selectedRaces }: RiderTab
         </table>
       </div>
     </div>
-  )
+  );
 }
