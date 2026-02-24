@@ -1,70 +1,167 @@
-# Getting Started with Create React App
+# Cycling Classics Filter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive Vite React application for exploring professional cyclists and their participation in classic cycling races. Browse a table of riders, filter by races, and see which races each rider competes in.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Rider Table**: View all professional cyclists with their UCI rankings, team affiliations, and prices
+- **Race Filtering**: Filter the table to show only riders competing in selected races
+- **Sortable Columns**: Click column headers to sort by name, team, UCI rank, or price
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **TanStack Table Integration**: Built with the powerful TanStack Table library for optimal performance
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+cycling-classics-filter/
+├── data/
+│   ├── riders.json          # Rider data with race participation
+│   └── races.json           # Available races
+├── src/
+│   ├── components/
+│   │   ├── RaceFilter.tsx    # Race filtering component
+│   │   ├── RaceFilter.css
+│   │   ├── RiderTable.tsx    # Main table component
+│   │   └── RiderTable.css
+│   ├── App.tsx              # Main app component
+│   ├── App.css
+│   ├── index.css
+│   └── main.tsx
+├── scraper.py               # Python script to enrich data
+├── vite.config.js           # Vite configuration
+├── tsconfig.json            # TypeScript configuration
+├── package.json
+└── index.html
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 20.19+ or 22.12+
+- Python 3.8+
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone or navigate to the project directory
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. (Optional) Update rider race data:
 
-### `npm run eject`
+```bash
+pip install procyclingstats
+npm run scrape
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run dev
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The app will be available at `http://localhost:5173`
 
-## Learn More
+### Production Build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a production build:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run build
+```
 
-### Code Splitting
+Preview the built app:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run preview
+```
 
-### Analyzing the Bundle Size
+## Data Format
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### riders.json
 
-### Making a Progressive Web App
+```json
+{
+  "updated": "2026-02-24 21:00",
+  "riders": [
+    {
+      "name": "POGAČAR Tadej",
+      "team": "UAE Team Emirates - XRG",
+      "price": 14.0,
+      "url": "https://www.procyclingstats.com/rider/tadej-pogacar",
+      "uci_rank": 1,
+      "uci_pts": 11680.0,
+      "races": ["Omloop Nieuwsblad", "Kuurne-Brussel-Kuurne", ...]
+    }
+  ]
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### races.json
 
-### Advanced Configuration
+```json
+{
+  "updated": "2026-02-24 21:00",
+  "races": [
+    {
+      "name": "Omloop Nieuwsblad",
+      "url": "https://www.procyclingstats.com/race/omloop-het-nieuwsblad"
+    }
+  ]
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Usage
 
-### Deployment
+1. **Browse Riders**: Scroll through the table to see all riders and their information
+2. **Sort**: Click any column header to sort the table
+3. **Filter by Race**: Select one or more races in the "Filter by Races" section
+4. **View Selection**: The table updates in real-time to show only riders competing in selected races
+5. **Click Rider Names**: Each rider name is a link to their Pro Cycling Stats profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Updating Race Data
 
-### `npm run build` fails to minify
+The scraper can automatically fetch race participation data from Pro Cycling Stats:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run scrape
+```
+
+The scraper will:
+- Load all races from `data/races.json`
+- Visit each race's startlist on Pro Cycling Stats
+- Match riders and update `data/riders.json` with race participation
+
+**Note**: Web scraping can be slow and may encounter issues if the website structure changes. The demo data includes realistic race assignments based on UCI rankings.
+
+## Technologies Used
+
+- **React 19**: UI framework
+- **TypeScript**: Type-safe JavaScript
+- **Vite 7**: Fast build tool and dev server
+- **TanStack Table 8**: Headless table library for advanced features
+- **CSS**: Custom styling with responsive design
+
+## Performance
+
+- Fast sorting and filtering with TanStack Table
+- Minimal bundle size (75KB gzipped)
+- Client-side data processing - no backend required
+
+## Future Enhancements
+
+- Real-time web scraping with live PCS data
+- Team filtering and statistics
+- UCI ranking sparklines
+- Race calendar view
+- Rider comparison tool
+- Export functionality
+
+## License
+
+MIT

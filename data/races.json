@@ -1,0 +1,81 @@
+{
+  "updated": "2026-02-24 21:00",
+  "races": [
+    {
+      "name": "Omloop Nieuwsblad",
+      "url": "https://www.procyclingstats.com/race/omloop-het-nieuwsblad"
+    },
+    {
+      "name": "Kuurne-Brussel-Kuurne",
+      "url": "https://www.procyclingstats.com/race/kuurne-brussel-kuurne"
+    },
+    {
+      "name": "Samyn Classic",
+      "url": "https://www.procyclingstats.com/race/gp-samyn"
+    },
+    {
+      "name": "Strade Bianche",
+      "url": "https://www.procyclingstats.com/race/strade-bianche"
+    },
+    {
+      "name": "Nokere Koerse",
+      "url": "https://www.procyclingstats.com/race/nokere-koerse"
+    },
+    {
+      "name": "Bredene Koksijde Classic",
+      "url": "https://www.procyclingstats.com/race/bredene-koksijde-classic"
+    },
+    {
+      "name": "Milaan-Sanremo",
+      "url": "https://www.procyclingstats.com/race/milano-sanremo"
+    },
+    {
+      "name": "Ronde van Brugge",
+      "url": "https://www.procyclingstats.com/race/classic-brugge-de-panne"
+    },
+    {
+      "name": "E3 Saxo Classic",
+      "url": "https://www.procyclingstats.com/race/e3-harelbeke"
+    },
+    {
+      "name": "In Flanders Fields",
+      "url": "https://www.procyclingstats.com/race/gent-wevelgem"
+    },
+    {
+      "name": "Dwars door Vlaanderen",
+      "url": "https://www.procyclingstats.com/race/dwars-door-vlaanderen"
+    },
+    {
+      "name": "Ronde van Vlaanderen",
+      "url": "https://www.procyclingstats.com/race/ronde-van-vlaanderen"
+    },
+    {
+      "name": "Scheldeprijs",
+      "url": "https://www.procyclingstats.com/race/scheldeprijs"
+    },
+    {
+      "name": "Parijs-Roubaix",
+      "url": "https://www.procyclingstats.com/race/paris-roubaix"
+    },
+    {
+      "name": "Ronde van Limburg",
+      "url": "https://www.procyclingstats.com/race/ronde-van-limburg"
+    },
+    {
+      "name": "Brabantse Pijl",
+      "url": "https://www.procyclingstats.com/race/brabantse-pijl"
+    },
+    {
+      "name": "Amstel Gold Race",
+      "url": "https://www.procyclingstats.com/race/amstel-gold-race"
+    },
+    {
+      "name": "Waalse Pijl",
+      "url": "https://www.procyclingstats.com/race/la-fleche-wallonne"
+    },
+    {
+      "name": "Luik-Bastenaken-Luik",
+      "url": "https://www.procyclingstats.com/race/luik-bastenaken-luik"
+    }
+  ]
+}
