@@ -23,14 +23,42 @@ interface Data {
 }
 
 function App() {
-  const [data, setData] = useState<Data | null>(null)
-  const [filteredRiders, setFilteredRiders] = useState<Rider[]>([])
-  const [selectedRaces, setSelectedRaces] = useState<Set<string>>(new Set())
-  const [selectedTeams, setSelectedTeams] = useState<Set<string>>(new Set())
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const [maxUCIRank, setMaxUCIRank] = useState<number>(2096)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+   const [data, setData] = useState<Data | null>(null)
+   const [filteredRiders, setFilteredRiders] = useState<Rider[]>([])
+   const [selectedRaces, setSelectedRaces] = useState<Set<string>>(new Set())
+   const [selectedTeams, setSelectedTeams] = useState<Set<string>>(new Set())
+   const [searchQuery, setSearchQuery] = useState<string>('')
+   const [maxUCIRank, setMaxUCIRank] = useState<number>(2096)
+   const [loading, setLoading] = useState(true)
+   const [error, setError] = useState<string | null>(null)
+
+   // Format timestamp and check if data is stale
+   const getFormattedTimestamp = (timestamp: string) => {
+     try {
+       // Try parsing ISO format first (2026-02-24T21:00:00Z)
+       let date = new Date(timestamp)
+       // If that fails, try the fallback format (2026-02-24 21:00)
+       if (isNaN(date.getTime())) {
+         date = new Date(timestamp.replace(' ', 'T') + 'Z')
+       }
+       if (isNaN(date.getTime())) {
+         return { formatted: timestamp, isStale: false }
+       }
+       return { 
+         formatted: date.toLocaleString('en-US', { 
+           month: 'short', 
+           day: 'numeric', 
+           year: 'numeric',
+           hour: '2-digit',
+           minute: '2-digit',
+           timeZoneName: 'short'
+         }),
+         isStale: Date.now() - date.getTime() > 24 * 60 * 60 * 1000
+       }
+     } catch {
+       return { formatted: timestamp, isStale: false }
+     }
+   }
 
   // Load riders data
   useEffect(() => {
@@ -133,12 +161,20 @@ function App() {
     new Set(data.riders.map(rider => rider.team))
   ).sort()
 
-  return (
-    <div className="container">
-      <header>
-        <h1>Cycling Classics Filter</h1>
-        <p className="last-updated">Data updated: {data.updated}</p>
-      </header>
+   return (
+     <div className="container">
+       <header>
+         <h1>Cycling Classics Filter</h1>
+         {data && (() => {
+           const { formatted, isStale } = getFormattedTimestamp(data.updated)
+           return (
+             <p className={`last-updated ${isStale ? 'stale' : ''}`}>
+               Data updated: {formatted}
+               {isStale && ' ⚠️ (older than 24 hours)'}
+             </p>
+           )
+         })()}
+       </header>
 
       <RiderSearch
         searchQuery={searchQuery}

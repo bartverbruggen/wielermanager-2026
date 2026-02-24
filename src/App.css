@@ -15,9 +15,15 @@ header h1 {
 }
 
 .last-updated {
-  color: #666;
-  font-size: 14px;
-  margin: 0;
+   color: #666;
+   font-size: 14px;
+   margin: 0;
+   transition: color 0.3s ease;
+}
+
+.last-updated.stale {
+   color: #ff9800;
+   font-weight: 500;
 }
 
 .filters-container {
