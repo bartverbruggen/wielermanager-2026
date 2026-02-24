@@ -128,7 +128,10 @@ function App() {
       }
 
       // Apply race filter
-      if (hasRaceFilter && (!rider.races || !rider.races.some((race) => racesSet.has(race)))) {
+      if (
+        hasRaceFilter &&
+        (!rider.races || !rider.races.some((race) => racesSet.has(race)))
+      ) {
         return false;
       }
 
@@ -147,14 +150,24 @@ function App() {
       if (hasSearchFilter) {
         const lowerName = rider.name.toLowerCase();
         const lowerTeam = rider.team.toLowerCase();
-        if (!lowerName.includes(lowerSearchQuery) && !lowerTeam.includes(lowerSearchQuery)) {
+        if (
+          !lowerName.includes(lowerSearchQuery) &&
+          !lowerTeam.includes(lowerSearchQuery)
+        ) {
           return false;
         }
       }
 
       return true;
     });
-  }, [data, selectedRaces, selectedTeams, selectedRiders, searchQuery, maxUCIRank]);
+  }, [
+    data,
+    selectedRaces,
+    selectedTeams,
+    selectedRiders,
+    searchQuery,
+    maxUCIRank,
+  ]);
 
   // Handle race filter changes
   const handleRaceFilterChange = (races: Set<string>) => {
@@ -268,7 +281,7 @@ function App() {
 
       <div className="p-6">
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col md:flex-row md:items-center md:gap-4">
+          <div className="flex flex-col md:flex-row md:items-center gap-4">
             <RacesDropdown
               races={allRaces}
               selectedRaces={selectedRaces}
