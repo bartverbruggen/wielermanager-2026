@@ -60,12 +60,32 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
                     print(f"  ℹ No startlist for {year}, trying {attempt_year}...", file=sys.stderr)
                 continue
             
-            # Find all rider links using broader search
+            # Find all rider links using targeted search
             riders = []
             seen_slugs = set()
             
-            # Look for all 'a' tags that contain 'rider' in href (handles both relative and absolute URLs)
-            for link in soup.find_all('a', href=True):
+            # Look for the "Preliminary startlist" or "Startlist" header to find the actual startlist section
+            startlist_header = None
+            for header in soup.find_all(['h2', 'h3', 'h4']):
+                header_text = header.get_text(strip=True).lower()
+                if 'startlist' in header_text or 'deelnemers' in header_text:
+                    startlist_header = header
+                    break
+            
+            if startlist_header:
+                # Get the content after the startlist header
+                content_section = startlist_header.find_next(['div', 'table', 'section'])
+                if content_section:
+                    search_area = content_section
+                else:
+                    # Fall back to everything after header until next major section
+                    search_area = startlist_header
+            else:
+                # If no header found, use the entire page (less ideal but fallback)
+                search_area = soup
+            
+            # Look for all 'a' tags with 'rider' in href, only within the startlist section
+            for link in search_area.find_all('a', href=True):
                 href = link.get('href', '')
                 if 'rider' not in href.lower():
                     continue

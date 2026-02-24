@@ -37,25 +37,13 @@
       "uci_per_m": 834.3,
       "wm_weighted": 431.4,
       "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
         "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
         "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Scheldeprijs",
         "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de Suisse",
+        "Tour de France"
       ]
     },
     {
@@ -93,27 +81,7 @@
       "pcs_recent_per_m": 115.8,
       "uci_per_m": 274.1,
       "wm_weighted": 405.4,
-      "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
-        "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
-        "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen",
-        "Scheldeprijs",
-        "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
-      ]
+      "races": []
     },
     {
       "name": "EVENEPOEL Remco",
@@ -151,25 +119,10 @@
       "uci_per_m": 390.9,
       "wm_weighted": 85.0,
       "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
-        "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
-        "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen",
-        "Scheldeprijs",
-        "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -209,24 +162,13 @@
       "wm_weighted": 264.0,
       "races": [
         "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
         "Samyn Classic",
         "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
         "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Scheldeprijs",
         "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Tour de France",
+        "Vuelta a España"
       ]
     },
     {
@@ -265,25 +207,13 @@
       "uci_per_m": 507.4,
       "wm_weighted": 288.6,
       "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
-        "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
         "Milaan-Sanremo",
-        "Ronde van Brugge",
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Scheldeprijs",
         "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Tour de France"
       ]
     },
     {
@@ -330,7 +260,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Scheldeprijs",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -372,7 +303,8 @@
         "Ronde van Brugge",
         "In Flanders Fields",
         "Scheldeprijs",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -417,7 +349,8 @@
         "Brabantse Pijl",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -456,25 +389,8 @@
       "uci_per_m": 743.0,
       "wm_weighted": null,
       "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
-        "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
-        "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen",
-        "Scheldeprijs",
-        "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -514,7 +430,8 @@
       "wm_weighted": 1.2,
       "races": [
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -553,25 +470,9 @@
       "uci_per_m": 809.1,
       "wm_weighted": 16.5,
       "races": [
-        "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
         "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
         "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
-        "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen",
-        "Scheldeprijs",
-        "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Tour de France"
       ]
     },
     {
@@ -611,7 +512,9 @@
       "wm_weighted": 110.1,
       "races": [
         "Milaan-Sanremo",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -653,7 +556,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -694,23 +598,10 @@
       "races": [
         "Omloop Nieuwsblad",
         "Kuurne-Brussel-Kuurne",
-        "Samyn Classic",
-        "Strade Bianche",
-        "Nokere Koerse",
-        "Bredene Koksijde Classic",
         "Milaan-Sanremo",
-        "Ronde van Brugge",
-        "E3 Saxo Classic",
-        "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Scheldeprijs",
-        "Parijs-Roubaix",
-        "Ronde van Limburg",
-        "Brabantse Pijl",
-        "Amstel Gold Race",
-        "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Giro d'Italia"
       ]
     },
     {
@@ -753,7 +644,8 @@
         "Milaan-Sanremo",
         "In Flanders Fields",
         "Dwars door Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia"
       ]
     },
     {
@@ -791,7 +683,9 @@
       "pcs_recent_per_m": 147.7,
       "uci_per_m": 265.1,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "SKJELMOSE Mattias",
@@ -831,7 +725,9 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France",
+        "Vuelta a España"
       ]
     },
     {
@@ -869,7 +765,10 @@
       "pcs_recent_per_m": 399.7,
       "uci_per_m": 723.3,
       "wm_weighted": 0.9,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "BENOOT Tiesj",
@@ -906,7 +805,9 @@
       "pcs_recent_per_m": 98.8,
       "uci_per_m": 215.8,
       "wm_weighted": 160.7,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "BRENNAN Matthew",
@@ -950,7 +851,10 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour of Norway",
+        "Tour de Suisse",
+        "Vuelta a España"
       ]
     },
     {
@@ -988,7 +892,9 @@
       "pcs_recent_per_m": 130.8,
       "uci_per_m": 301.2,
       "wm_weighted": 6.5,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "DE LIE Arnaud",
@@ -1032,7 +938,9 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de Suisse",
+        "Tour de France"
       ]
     },
     {
@@ -1076,7 +984,9 @@
         "Milaan-Sanremo",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -1119,7 +1029,10 @@
         "Milaan-Sanremo",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de Suisse",
+        "Tour de France",
+        "Il Lombardia"
       ]
     },
     {
@@ -1157,7 +1070,9 @@
       "pcs_recent_per_m": 193.5,
       "uci_per_m": 353.8,
       "wm_weighted": 66.6,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "LIPOWITZ Florian",
@@ -1194,7 +1109,9 @@
       "pcs_recent_per_m": 202.2,
       "uci_per_m": 428.3,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "MATTHEWS Michael",
@@ -1237,7 +1154,8 @@
         "In Flanders Fields",
         "Ronde van Vlaanderen",
         "Amstel Gold Race",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -1278,7 +1196,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -1370,7 +1289,9 @@
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -1415,7 +1336,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -1456,7 +1378,10 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour of Norway",
+        "Tour de Suisse",
+        "Tour de France"
       ]
     },
     {
@@ -1506,7 +1431,8 @@
         "Ronde van Vlaanderen",
         "Parijs-Roubaix",
         "Brabantse Pijl",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Tour de France"
       ]
     },
     {
@@ -1544,7 +1470,9 @@
       "pcs_recent_per_m": 153.0,
       "uci_per_m": 170.4,
       "wm_weighted": 39.9,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "CHRISTEN Jan",
@@ -1585,7 +1513,10 @@
         "Strade Bianche",
         "Brabantse Pijl",
         "Amstel Gold Race",
-        "Waalse Pijl"
+        "Waalse Pijl",
+        "Tour of Norway",
+        "Giro d'Italia",
+        "Il Lombardia"
       ]
     },
     {
@@ -1626,7 +1557,9 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -1706,7 +1639,9 @@
       "pcs_recent_per_m": 119.4,
       "uci_per_m": 152.0,
       "wm_weighted": 19.5,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "FRETIN Milan",
@@ -1749,7 +1684,9 @@
         "Ronde van Brugge",
         "In Flanders Fields",
         "Scheldeprijs",
-        "Ronde van Limburg"
+        "Ronde van Limburg",
+        "Tour de France",
+        "Tour of Belgium"
       ]
     },
     {
@@ -1787,7 +1724,10 @@
       "pcs_recent_per_m": 224.4,
       "uci_per_m": 443.2,
       "wm_weighted": 0.6,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "GEE-WEST Derek",
@@ -1824,7 +1764,9 @@
       "pcs_recent_per_m": 146.2,
       "uci_per_m": 324.0,
       "wm_weighted": 1.9,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "GIRMAY Biniam",
@@ -1865,7 +1807,8 @@
         "Omloop Nieuwsblad",
         "Kuurne-Brussel-Kuurne",
         "In Flanders Fields",
-        "Dwars door Vlaanderen"
+        "Dwars door Vlaanderen",
+        "Tour de France"
       ]
     },
     {
@@ -1950,7 +1893,10 @@
       "pcs_recent_per_m": 142.8,
       "uci_per_m": 299.0,
       "wm_weighted": 2.4,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "HIRSCHI Marc",
@@ -1990,7 +1936,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -2078,7 +2025,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -2122,7 +2070,8 @@
         "E3 Saxo Classic",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -2160,7 +2109,10 @@
       "pcs_recent_per_m": 105.4,
       "uci_per_m": 173.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "LAPORTE Christophe",
@@ -2206,7 +2158,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -2245,7 +2198,9 @@
       "uci_per_m": 368.6,
       "wm_weighted": 22.0,
       "races": [
-        "Waalse Pijl"
+        "Waalse Pijl",
+        "Tour de Suisse",
+        "Tour de France"
       ]
     },
     {
@@ -2290,7 +2245,8 @@
         "Nokere Koerse",
         "In Flanders Fields",
         "Scheldeprijs",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -2337,7 +2293,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -2375,7 +2332,9 @@
       "pcs_recent_per_m": 206.2,
       "uci_per_m": 159.4,
       "wm_weighted": 20.7,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "O'CONNOR Ben",
@@ -2412,7 +2371,9 @@
       "pcs_recent_per_m": 150.0,
       "uci_per_m": 202.2,
       "wm_weighted": 1.9,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "ONLEY Oscar",
@@ -2487,7 +2448,9 @@
       "uci_per_m": 324.6,
       "wm_weighted": 1.0,
       "races": [
-        "Strade Bianche"
+        "Strade Bianche",
+        "Giro d'Italia",
+        "Il Lombardia"
       ]
     },
     {
@@ -2528,7 +2491,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -2646,7 +2610,10 @@
       "pcs_recent_per_m": 228.4,
       "uci_per_m": 416.6,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "TIBERI Antonio",
@@ -2683,7 +2650,9 @@
       "pcs_recent_per_m": 151.4,
       "uci_per_m": 260.8,
       "wm_weighted": 1.5,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "TRENTIN Matteo",
@@ -2723,7 +2692,8 @@
       "races": [
         "Omloop Nieuwsblad",
         "Kuurne-Brussel-Kuurne",
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour de France"
       ]
     },
     {
@@ -2763,7 +2733,8 @@
       "wm_weighted": null,
       "races": [
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -2805,7 +2776,9 @@
         "Strade Bianche",
         "Milaan-Sanremo",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -2890,7 +2863,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia"
       ]
     },
     {
@@ -2928,7 +2902,9 @@
       "pcs_recent_per_m": 309.2,
       "uci_per_m": 571.2,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "WÆRENSKJOLD Søren",
@@ -3010,7 +2986,10 @@
       "pcs_recent_per_m": 193.0,
       "uci_per_m": 308.6,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "ABRAHAMSEN Jonas",
@@ -3094,7 +3073,9 @@
       "uci_per_m": 91.2,
       "wm_weighted": 23.4,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Giro d'Italia",
+        "Tour de France"
       ]
     },
     {
@@ -3137,7 +3118,8 @@
         "Milaan-Sanremo",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -3218,7 +3200,8 @@
       "uci_per_m": 359.2,
       "wm_weighted": null,
       "races": [
-        "Strade Bianche"
+        "Strade Bianche",
+        "Giro d'Italia"
       ]
     },
     {
@@ -3261,7 +3244,8 @@
         "Kuurne-Brussel-Kuurne",
         "Milaan-Sanremo",
         "E3 Saxo Classic",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -3391,7 +3375,9 @@
         "Ronde van Brugge",
         "In Flanders Fields",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia",
+        "Vuelta a España"
       ]
     },
     {
@@ -3433,7 +3419,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Il Lombardia"
       ]
     },
     {
@@ -3638,7 +3625,8 @@
       "races": [
         "Omloop Nieuwsblad",
         "Milaan-Sanremo",
-        "Ronde van Vlaanderen"
+        "Ronde van Vlaanderen",
+        "Giro d'Italia"
       ]
     },
     {
@@ -3680,7 +3668,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -3723,7 +3712,8 @@
         "Bredene Koksijde Classic",
         "Ronde van Brugge",
         "In Flanders Fields",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -3800,7 +3790,10 @@
       "pcs_recent_per_m": 59.2,
       "uci_per_m": 81.5,
       "wm_weighted": 8.0,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "CARUSO Damiano",
@@ -3838,7 +3831,8 @@
       "uci_per_m": 222.8,
       "wm_weighted": 1.4,
       "races": [
-        "Milaan-Sanremo"
+        "Milaan-Sanremo",
+        "Giro d'Italia"
       ]
     },
     {
@@ -3916,7 +3910,8 @@
       "races": [
         "Milaan-Sanremo",
         "Brabantse Pijl",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Vuelta a España"
       ]
     },
     {
@@ -3956,7 +3951,9 @@
       "wm_weighted": 34.4,
       "races": [
         "Milaan-Sanremo",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France",
+        "Vuelta a España"
       ]
     },
     {
@@ -4190,7 +4187,9 @@
       "pcs_recent_per_m": 202.8,
       "uci_per_m": 358.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "GARCÍA CORTINA Iván",
@@ -4269,7 +4268,9 @@
       "pcs_recent_per_m": 78.0,
       "uci_per_m": 122.2,
       "wm_weighted": 0.6,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "GAVIRIA Fernando",
@@ -4424,7 +4425,9 @@
         "Samyn Classic",
         "Bredene Koksijde Classic",
         "Scheldeprijs",
-        "Ronde van Limburg"
+        "Ronde van Limburg",
+        "Giro d'Italia",
+        "Tour of Belgium"
       ]
     },
     {
@@ -4499,7 +4502,9 @@
       "pcs_recent_per_m": 85.8,
       "uci_per_m": 128.8,
       "wm_weighted": 6.7,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "HERMANS Quinten",
@@ -4663,7 +4668,9 @@
       "pcs_recent_per_m": 158.5,
       "uci_per_m": 203.8,
       "wm_weighted": 5.6,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "KANTER Max",
@@ -4907,7 +4914,10 @@
       "pcs_recent_per_m": 114.8,
       "uci_per_m": 185.0,
       "wm_weighted": 15.9,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France"
+      ]
     },
     {
       "name": "LAPEIRA Paul",
@@ -4949,7 +4959,8 @@
         "Milaan-Sanremo",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de Suisse"
       ]
     },
     {
@@ -4992,7 +5003,9 @@
         "Milaan-Sanremo",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour of Norway",
+        "Vuelta a España"
       ]
     },
     {
@@ -5068,7 +5081,9 @@
       "uci_per_m": 410.5,
       "wm_weighted": 1.2,
       "races": [
-        "Dwars door Vlaanderen"
+        "Dwars door Vlaanderen",
+        "Tour of Norway",
+        "Giro d'Italia"
       ]
     },
     {
@@ -5149,7 +5164,8 @@
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen"
+        "Ronde van Vlaanderen",
+        "Tour de France"
       ]
     },
     {
@@ -5194,7 +5210,8 @@
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Dwars door Vlaanderen",
-        "Scheldeprijs"
+        "Scheldeprijs",
+        "Tour of Norway"
       ]
     },
     {
@@ -5232,7 +5249,10 @@
       "pcs_recent_per_m": 156.5,
       "uci_per_m": 195.8,
       "wm_weighted": 21.0,
-      "races": []
+      "races": [
+        "Tour de France",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "MARTÍNEZ Daniel Felipe",
@@ -5271,7 +5291,8 @@
       "wm_weighted": 0.3,
       "races": [
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -5309,7 +5330,10 @@
       "pcs_recent_per_m": 168.2,
       "uci_per_m": 258.2,
       "wm_weighted": 2.0,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "MCNULTY Brandon",
@@ -5346,7 +5370,9 @@
       "pcs_recent_per_m": 353.5,
       "uci_per_m": 542.5,
       "wm_weighted": 20.0,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "MENTEN Milan",
@@ -5463,7 +5489,8 @@
       "uci_per_m": 115.5,
       "wm_weighted": 15.2,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -5503,7 +5530,8 @@
       "wm_weighted": 66.0,
       "races": [
         "Dwars door Vlaanderen",
-        "Ronde van Vlaanderen"
+        "Ronde van Vlaanderen",
+        "Giro d'Italia"
       ]
     },
     {
@@ -5661,7 +5689,9 @@
       "pcs_recent_per_m": 96.8,
       "uci_per_m": 137.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "PENHOËT Paul",
@@ -5746,7 +5776,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -5784,7 +5815,10 @@
       "pcs_recent_per_m": 151.5,
       "uci_per_m": 228.5,
       "wm_weighted": 0.6,
-      "races": []
+      "races": [
+        "Tour de France",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "PLUIMERS Rick",
@@ -5906,7 +5940,10 @@
       "pcs_recent_per_m": 70.2,
       "uci_per_m": 106.2,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "REX Laurenz",
@@ -5980,7 +6017,9 @@
       "pcs_recent_per_m": 148.2,
       "uci_per_m": 255.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "RODRÍGUEZ Carlos",
@@ -6055,7 +6094,8 @@
       "uci_per_m": 196.2,
       "wm_weighted": null,
       "races": [
-        "Milaan-Sanremo"
+        "Milaan-Sanremo",
+        "Tour de France"
       ]
     },
     {
@@ -6093,7 +6133,11 @@
       "pcs_recent_per_m": 103.0,
       "uci_per_m": 178.8,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de France",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "SCHACHMANN Maximilian",
@@ -6216,7 +6260,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia"
       ]
     },
     {
@@ -6256,7 +6301,8 @@
       "wm_weighted": 7.0,
       "races": [
         "Strade Bianche",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Tour de France"
       ]
     },
     {
@@ -6377,7 +6423,11 @@
       "pcs_recent_per_m": 124.0,
       "uci_per_m": 152.2,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de Suisse",
+        "Tour de France",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "STRONG Corbin",
@@ -6496,7 +6546,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -6623,7 +6674,8 @@
       "wm_weighted": 32.1,
       "races": [
         "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -6703,7 +6755,8 @@
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
         "Amstel Gold Race",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -6745,7 +6798,10 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France",
+        "Vuelta a España",
+        "Il Lombardia"
       ]
     },
     {
@@ -6867,7 +6923,8 @@
         "Omloop Nieuwsblad",
         "Strade Bianche",
         "E3 Saxo Classic",
-        "Ronde van Vlaanderen"
+        "Ronde van Vlaanderen",
+        "Tour of Norway"
       ]
     },
     {
@@ -6958,7 +7015,8 @@
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
         "Parijs-Roubaix",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Vuelta a España"
       ]
     },
     {
@@ -7001,7 +7059,8 @@
         "Kuurne-Brussel-Kuurne",
         "Milaan-Sanremo",
         "In Flanders Fields",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Giro d'Italia"
       ]
     },
     {
@@ -7077,7 +7136,8 @@
       "uci_per_m": 90.5,
       "wm_weighted": 7.1,
       "races": [
-        "Nokere Koerse"
+        "Nokere Koerse",
+        "Giro d'Italia"
       ]
     },
     {
@@ -7118,7 +7178,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -7202,7 +7263,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Vuelta a España"
       ]
     },
     {
@@ -7240,7 +7302,9 @@
       "pcs_recent_per_m": 128.2,
       "uci_per_m": 227.0,
       "wm_weighted": 23.2,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "VLASOV Aleksandr",
@@ -7277,7 +7341,9 @@
       "pcs_recent_per_m": 72.2,
       "uci_per_m": 85.8,
       "wm_weighted": 3.0,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "WATSON Samuel",
@@ -7393,7 +7459,10 @@
       "races": [
         "Strade Bianche",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de Suisse",
+        "Vuelta a España",
+        "Il Lombardia"
       ]
     },
     {
@@ -7478,7 +7547,8 @@
         "E3 Saxo Classic",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Tour de Suisse"
       ]
     },
     {
@@ -7563,7 +7633,8 @@
       "wm_weighted": null,
       "races": [
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour of Norway"
       ]
     },
     {
@@ -7602,7 +7673,8 @@
       "uci_per_m": 86.3,
       "wm_weighted": 8.3,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Giro d'Italia"
       ]
     },
     {
@@ -7809,7 +7881,10 @@
       "pcs_recent_per_m": 125.3,
       "uci_per_m": 211.0,
       "wm_weighted": 0.9,
-      "races": []
+      "races": [
+        "Tour de France",
+        "Il Lombardia"
+      ]
     },
     {
       "name": "ARNDT Nikias",
@@ -7883,7 +7958,9 @@
       "pcs_recent_per_m": 116.7,
       "uci_per_m": 172.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "ARTZ Huub",
@@ -7927,7 +8004,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour of Norway"
       ]
     },
     {
@@ -8042,7 +8120,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -8275,7 +8354,9 @@
       "pcs_recent_per_m": 148.7,
       "uci_per_m": 208.0,
       "wm_weighted": 1.4,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "BEULLENS Cedric",
@@ -8394,7 +8475,9 @@
       "pcs_recent_per_m": 76.3,
       "uci_per_m": 103.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "BISSEGGER Stefan",
@@ -8437,7 +8520,9 @@
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France",
+        "Tour of Belgium"
       ]
     },
     {
@@ -8476,7 +8561,8 @@
       "uci_per_m": 37.3,
       "wm_weighted": 46.8,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Tour of Norway"
       ]
     },
     {
@@ -8558,7 +8644,8 @@
       "races": [
         "Nokere Koerse",
         "Bredene Koksijde Classic",
-        "Ronde van Brugge"
+        "Ronde van Brugge",
+        "Vuelta a España"
       ]
     },
     {
@@ -8596,7 +8683,9 @@
       "pcs_recent_per_m": 10.0,
       "uci_per_m": null,
       "wm_weighted": 1.0,
-      "races": []
+      "races": [
+        "Tour de Suisse"
+      ]
     },
     {
       "name": "BRAET Vito",
@@ -8751,7 +8840,9 @@
       "pcs_recent_per_m": 70.3,
       "uci_per_m": 83.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "BURGAUDEAU Mathieu",
@@ -8829,7 +8920,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -8948,7 +9040,9 @@
       "pcs_recent_per_m": 74.0,
       "uci_per_m": 114.7,
       "wm_weighted": 2.1,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "CAVAGNA Rémi",
@@ -9176,7 +9270,8 @@
       "uci_per_m": 34.3,
       "wm_weighted": null,
       "races": [
-        "Strade Bianche"
+        "Strade Bianche",
+        "Giro d'Italia"
       ]
     },
     {
@@ -9296,7 +9391,8 @@
         "Strade Bianche",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour of Norway"
       ]
     },
     {
@@ -9690,7 +9786,9 @@
       "pcs_recent_per_m": 93.7,
       "uci_per_m": 136.7,
       "wm_weighted": 4.2,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "DE PLUS Laurens",
@@ -9769,7 +9867,8 @@
         "Samyn Classic",
         "Nokere Koerse",
         "Bredene Koksijde Classic",
-        "Scheldeprijs"
+        "Scheldeprijs",
+        "Tour of Belgium"
       ]
     },
     {
@@ -10078,7 +10177,9 @@
       "pcs_recent_per_m": 64.0,
       "uci_per_m": 77.0,
       "wm_weighted": 5.1,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "EINHORN Itamar",
@@ -10115,7 +10216,9 @@
       "pcs_recent_per_m": 46.7,
       "uci_per_m": 73.7,
       "wm_weighted": 4.7,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "ENGELHARDT Felix",
@@ -10231,7 +10334,8 @@
       "wm_weighted": 0.5,
       "races": [
         "Strade Bianche",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -10312,7 +10416,8 @@
         "Kuurne-Brussel-Kuurne",
         "Strade Bianche",
         "Amstel Gold Race",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Vuelta a España"
       ]
     },
     {
@@ -10765,7 +10870,8 @@
       "wm_weighted": 4.2,
       "races": [
         "Kuurne-Brussel-Kuurne",
-        "Samyn Classic"
+        "Samyn Classic",
+        "Giro d'Italia"
       ]
     },
     {
@@ -10884,7 +10990,9 @@
       "pcs_recent_per_m": 27.7,
       "uci_per_m": 14.7,
       "wm_weighted": 5.3,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "HAGENES Per Strand",
@@ -10923,7 +11031,9 @@
       "wm_weighted": 4.0,
       "races": [
         "Omloop Nieuwsblad",
-        "Samyn Classic"
+        "Samyn Classic",
+        "Tour of Norway",
+        "Vuelta a España"
       ]
     },
     {
@@ -11039,7 +11149,9 @@
       "pcs_recent_per_m": 74.3,
       "uci_per_m": 89.3,
       "wm_weighted": 1.1,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "HERREGODTS Rune",
@@ -11078,7 +11190,8 @@
       "wm_weighted": 5.5,
       "races": [
         "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Belgium"
       ]
     },
     {
@@ -11116,7 +11229,9 @@
       "pcs_recent_per_m": 145.3,
       "uci_per_m": 160.7,
       "wm_weighted": 0.7,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "HIRT Jan",
@@ -11319,7 +11434,9 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France",
+        "Tour of Belgium"
       ]
     },
     {
@@ -11546,7 +11663,9 @@
       "pcs_recent_per_m": 16.3,
       "uci_per_m": 26.3,
       "wm_weighted": 11.4,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "KELDERMAN Wilco",
@@ -11583,7 +11702,9 @@
       "pcs_recent_per_m": 62.3,
       "uci_per_m": 70.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "KIELICH Timo",
@@ -11628,7 +11749,8 @@
         "E3 Saxo Classic",
         "In Flanders Fields",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia"
       ]
     },
     {
@@ -11674,7 +11796,9 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France",
+        "Tour of Belgium"
       ]
     },
     {
@@ -11873,7 +11997,9 @@
       "pcs_recent_per_m": 64.3,
       "uci_per_m": 111.7,
       "wm_weighted": 13.8,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "KRUIJSWIJK Steven",
@@ -11910,7 +12036,9 @@
       "pcs_recent_per_m": 10.0,
       "uci_per_m": 10.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "KULSET Johannes",
@@ -11947,7 +12075,9 @@
       "pcs_recent_per_m": 195.0,
       "uci_per_m": 245.0,
       "wm_weighted": 0.6,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "LABROSSE Jordan",
@@ -12151,7 +12281,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour of Norway"
       ]
     },
     {
@@ -12229,7 +12360,9 @@
       "pcs_recent_per_m": 192.0,
       "uci_per_m": 216.7,
       "wm_weighted": 0.8,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "LEITÃO Iúri",
@@ -12303,7 +12436,10 @@
       "pcs_recent_per_m": 75.3,
       "uci_per_m": 98.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Tour de Suisse"
+      ]
     },
     {
       "name": "LIEPIŅŠ Emīls",
@@ -12387,7 +12523,8 @@
         "Nokere Koerse",
         "E3 Saxo Classic",
         "In Flanders Fields",
-        "Dwars door Vlaanderen"
+        "Dwars door Vlaanderen",
+        "Tour of Norway"
       ]
     },
     {
@@ -12499,7 +12636,10 @@
       "pcs_recent_per_m": 236.3,
       "uci_per_m": 290.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "LÓPEZ Juan Pedro",
@@ -12536,7 +12676,9 @@
       "pcs_recent_per_m": 74.3,
       "uci_per_m": 98.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "LOUVEL Matis",
@@ -12805,7 +12947,8 @@
       "uci_per_m": null,
       "wm_weighted": 4.0,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Giro d'Italia"
       ]
     },
     {
@@ -12886,7 +13029,8 @@
         "Omloop Nieuwsblad",
         "Kuurne-Brussel-Kuurne",
         "Ronde van Vlaanderen",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Vuelta a España"
       ]
     },
     {
@@ -12963,7 +13107,8 @@
       "wm_weighted": 12.2,
       "races": [
         "Strade Bianche",
-        "Amstel Gold Race"
+        "Amstel Gold Race",
+        "Il Lombardia"
       ]
     },
     {
@@ -13008,7 +13153,9 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia",
+        "Tour de Suisse"
       ]
     },
     {
@@ -13046,7 +13193,9 @@
       "pcs_recent_per_m": 32.0,
       "uci_per_m": 51.0,
       "wm_weighted": 8.2,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "NERURKAR Lukas",
@@ -13120,7 +13269,10 @@
       "pcs_recent_per_m": 100.7,
       "uci_per_m": 134.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "NOVAK Domen",
@@ -13162,7 +13314,9 @@
         "Milaan-Sanremo",
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de Suisse",
+        "Vuelta a España"
       ]
     },
     {
@@ -13237,7 +13391,9 @@
       "pcs_recent_per_m": 94.0,
       "uci_per_m": 135.7,
       "wm_weighted": 1.6,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "OLIVEIRA Rui",
@@ -13280,7 +13436,8 @@
         "Nokere Koerse",
         "In Flanders Fields",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour of Norway"
       ]
     },
     {
@@ -13598,7 +13755,10 @@
       "pcs_recent_per_m": 202.0,
       "uci_per_m": 228.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia",
+        "Il Lombardia"
+      ]
     },
     {
       "name": "PLANCKAERT Edward",
@@ -13712,7 +13872,9 @@
       "pcs_recent_per_m": 113.3,
       "uci_per_m": 133.0,
       "wm_weighted": 2.0,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "PRADES Eduard",
@@ -14325,7 +14487,9 @@
       "pcs_recent_per_m": 182.0,
       "uci_per_m": 234.7,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "ROTA Lorenzo",
@@ -14362,7 +14526,9 @@
       "pcs_recent_per_m": 34.7,
       "uci_per_m": 41.7,
       "wm_weighted": 5.6,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "RUSSO Clément",
@@ -15208,7 +15374,9 @@
       "pcs_recent_per_m": 16.7,
       "uci_per_m": 13.7,
       "wm_weighted": 17.6,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "TEJADA Harold",
@@ -15245,7 +15413,10 @@
       "pcs_recent_per_m": 189.0,
       "uci_per_m": 264.3,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de France",
+        "Vuelta a España"
+      ]
     },
     {
       "name": "TESFATSION Natnael",
@@ -15603,7 +15774,8 @@
       "races": [
         "Amstel Gold Race",
         "Waalse Pijl",
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Giro d'Italia"
       ]
     },
     {
@@ -15641,7 +15813,9 @@
       "pcs_recent_per_m": 29.7,
       "uci_per_m": 23.0,
       "wm_weighted": 4.6,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "VALGREN Michael",
@@ -15683,7 +15857,8 @@
         "In Flanders Fields",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Giro d'Italia"
       ]
     },
     {
@@ -15724,7 +15899,8 @@
       "races": [
         "Omloop Nieuwsblad",
         "Samyn Classic",
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour of Norway"
       ]
     },
     {
@@ -15846,7 +16022,8 @@
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
         "Amstel Gold Race",
-        "Waalse Pijl"
+        "Waalse Pijl",
+        "Tour de France"
       ]
     },
     {
@@ -15926,7 +16103,8 @@
         "Kuurne-Brussel-Kuurne",
         "Dwars door Vlaanderen",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour de France"
       ]
     },
     {
@@ -15969,7 +16147,8 @@
         "Kuurne-Brussel-Kuurne",
         "Milaan-Sanremo",
         "Ronde van Vlaanderen",
-        "Parijs-Roubaix"
+        "Parijs-Roubaix",
+        "Tour of Norway"
       ]
     },
     {
@@ -16247,7 +16426,9 @@
       "pcs_recent_per_m": 90.0,
       "uci_per_m": 104.3,
       "wm_weighted": 6.9,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "VERONA Carlos",
@@ -16395,7 +16576,9 @@
       "pcs_recent_per_m": 42.7,
       "uci_per_m": 41.7,
       "wm_weighted": 1.5,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "WILLIAMS Stephen",
@@ -16469,7 +16652,9 @@
       "pcs_recent_per_m": 158.3,
       "uci_per_m": 229.3,
       "wm_weighted": 6.8,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "ZANA Filippo",
@@ -17186,7 +17371,9 @@
       "pcs_recent_per_m": 77.0,
       "uci_per_m": 67.5,
       "wm_weighted": 0.3,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "AZANZA Ibai",
@@ -18465,7 +18652,9 @@
       "pcs_recent_per_m": 27.5,
       "uci_per_m": 19.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "BOARDMAN Sam",
@@ -19448,7 +19637,9 @@
       "pcs_recent_per_m": 7.0,
       "uci_per_m": null,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "CARRASCOSA Pablo",
@@ -19864,7 +20055,9 @@
       "pcs_recent_per_m": 59.5,
       "uci_per_m": 54.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "CHUMIL Sergio Geovani",
@@ -21030,7 +21223,8 @@
       "uci_per_m": 6.5,
       "wm_weighted": 4.5,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -21223,7 +21417,8 @@
       "wm_weighted": 5.2,
       "races": [
         "Kuurne-Brussel-Kuurne",
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour of Norway"
       ]
     },
     {
@@ -21860,7 +22055,9 @@
       "pcs_recent_per_m": 211.5,
       "uci_per_m": 224.5,
       "wm_weighted": 7.6,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "EISING Tijmen",
@@ -22312,7 +22509,8 @@
       "wm_weighted": null,
       "races": [
         "Omloop Nieuwsblad",
-        "Samyn Classic"
+        "Samyn Classic",
+        "Tour of Norway"
       ]
     },
     {
@@ -22650,7 +22848,9 @@
       "pcs_recent_per_m": 18.5,
       "uci_per_m": 25.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "FOX Matthew",
@@ -23069,7 +23269,8 @@
       "races": [
         "Kuurne-Brussel-Kuurne",
         "Samyn Classic",
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour of Norway"
       ]
     },
     {
@@ -23261,7 +23462,8 @@
       "wm_weighted": 3.8,
       "races": [
         "Strade Bianche",
-        "Milaan-Sanremo"
+        "Milaan-Sanremo",
+        "Giro d'Italia"
       ]
     },
     {
@@ -23484,7 +23686,9 @@
       "pcs_recent_per_m": 65.5,
       "uci_per_m": 75.0,
       "wm_weighted": 2.5,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "GLOAG Thomas",
@@ -23521,7 +23725,9 @@
       "pcs_recent_per_m": 110.5,
       "uci_per_m": 60.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "GOGL Michael",
@@ -23783,7 +23989,9 @@
       "pcs_recent_per_m": 52.0,
       "uci_per_m": 51.5,
       "wm_weighted": 2.0,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "GRADEK Kamil",
@@ -24385,7 +24593,9 @@
       "pcs_recent_per_m": 15.0,
       "uci_per_m": 32.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "HAYTER Leo",
@@ -24609,7 +24819,9 @@
       "pcs_recent_per_m": 53.0,
       "uci_per_m": 50.0,
       "wm_weighted": 3.0,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "HESSMANN Michel",
@@ -24722,7 +24934,9 @@
       "pcs_recent_per_m": 134.0,
       "uci_per_m": 107.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "HOUCOU Emmanuel",
@@ -24874,7 +25088,9 @@
       "pcs_recent_per_m": 25.0,
       "uci_per_m": 13.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "HUYSMANS Nolan",
@@ -25060,7 +25276,8 @@
       "uci_per_m": 17.5,
       "wm_weighted": null,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -25363,7 +25580,8 @@
       "uci_per_m": 32.5,
       "wm_weighted": 6.4,
       "races": [
-        "Samyn Classic"
+        "Samyn Classic",
+        "Tour of Norway"
       ]
     },
     {
@@ -25964,7 +26182,9 @@
       "pcs_recent_per_m": 90.0,
       "uci_per_m": 75.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "KOLZE CHANGIZI Sebastian",
@@ -26004,7 +26224,8 @@
       "races": [
         "Ronde van Brugge",
         "In Flanders Fields",
-        "Dwars door Vlaanderen"
+        "Dwars door Vlaanderen",
+        "Tour of Belgium"
       ]
     },
     {
@@ -27257,7 +27478,8 @@
       "wm_weighted": 6.8,
       "races": [
         "Omloop Nieuwsblad",
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -27671,7 +27893,9 @@
       "pcs_recent_per_m": 12.5,
       "uci_per_m": 13.0,
       "wm_weighted": 5.5,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "MÄRKL Niklas",
@@ -28613,7 +28837,8 @@
       "uci_per_m": 176.5,
       "wm_weighted": 1.0,
       "races": [
-        "Luik-Bastenaken-Luik"
+        "Luik-Bastenaken-Luik",
+        "Tour de France"
       ]
     },
     {
@@ -28842,7 +29067,9 @@
       "pcs_recent_per_m": 55.5,
       "uci_per_m": 9.0,
       "wm_weighted": 4.5,
-      "races": []
+      "races": [
+        "Tour de France"
+      ]
     },
     {
       "name": "MOURIS Wessel",
@@ -28880,7 +29107,8 @@
       "uci_per_m": 10.5,
       "wm_weighted": null,
       "races": [
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour of Norway"
       ]
     },
     {
@@ -28919,7 +29147,8 @@
       "uci_per_m": 90.0,
       "wm_weighted": 0.5,
       "races": [
-        "Strade Bianche"
+        "Strade Bianche",
+        "Giro d'Italia"
       ]
     },
     {
@@ -28960,7 +29189,8 @@
       "races": [
         "Omloop Nieuwsblad",
         "Kuurne-Brussel-Kuurne",
-        "In Flanders Fields"
+        "In Flanders Fields",
+        "Tour of Norway"
       ]
     },
     {
@@ -29072,7 +29302,9 @@
       "pcs_recent_per_m": 340.0,
       "uci_per_m": 363.0,
       "wm_weighted": 0.4,
-      "races": []
+      "races": [
+        "Vuelta a España"
+      ]
     },
     {
       "name": "MUÑOZ Francisco",
@@ -29220,7 +29452,9 @@
       "pcs_recent_per_m": 22.5,
       "uci_per_m": null,
       "wm_weighted": 8.1,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "NAT Joost",
@@ -29556,7 +29790,9 @@
       "pcs_recent_per_m": 46.0,
       "uci_per_m": 27.5,
       "wm_weighted": 2.0,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "OLIVER Ben",
@@ -29708,7 +29944,8 @@
       "uci_per_m": 30.5,
       "wm_weighted": null,
       "races": [
-        "Kuurne-Brussel-Kuurne"
+        "Kuurne-Brussel-Kuurne",
+        "Tour of Norway"
       ]
     },
     {
@@ -30899,7 +31136,8 @@
       "wm_weighted": 6.0,
       "races": [
         "Kuurne-Brussel-Kuurne",
-        "Samyn Classic"
+        "Samyn Classic",
+        "Tour of Norway"
       ]
     },
     {
@@ -30976,7 +31214,9 @@
       "pcs_recent_per_m": 30.0,
       "uci_per_m": 46.5,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "RAISBERG Nadav",
@@ -31547,7 +31787,9 @@
       "pcs_recent_per_m": 7.5,
       "uci_per_m": null,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "ROJAS Vicente",
@@ -32374,7 +32616,8 @@
       "uci_per_m": 55.0,
       "wm_weighted": null,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Tour of Norway"
       ]
     },
     {
@@ -32452,7 +32695,10 @@
       "pcs_recent_per_m": 31.5,
       "uci_per_m": 24.0,
       "wm_weighted": 11.6,
-      "races": []
+      "races": [
+        "Tour of Norway",
+        "Giro d'Italia"
+      ]
     },
     {
       "name": "SKERL Daniel",
@@ -33086,7 +33332,9 @@
       "pcs_recent_per_m": 8.0,
       "uci_per_m": 21.0,
       "wm_weighted": null,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "SVRČEK Martin",
@@ -34439,7 +34687,9 @@
       "pcs_recent_per_m": 27.5,
       "uci_per_m": 15.0,
       "wm_weighted": 0.5,
-      "races": []
+      "races": [
+        "Tour of Norway"
+      ]
     },
     {
       "name": "VAN DEN BERG Julius",
@@ -34591,7 +34841,8 @@
       "uci_per_m": null,
       "wm_weighted": 7.0,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Tour of Norway"
       ]
     },
     {
@@ -34893,7 +35144,8 @@
       "uci_per_m": 32.0,
       "wm_weighted": 3.0,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Tour of Norway"
       ]
     },
     {
@@ -34932,7 +35184,8 @@
       "uci_per_m": 25.5,
       "wm_weighted": 10.0,
       "races": [
-        "Omloop Nieuwsblad"
+        "Omloop Nieuwsblad",
+        "Tour of Norway"
       ]
     },
     {
@@ -35124,7 +35377,8 @@
       "uci_per_m": null,
       "wm_weighted": null,
       "races": [
-        "Samyn Classic"
+        "Samyn Classic",
+        "Tour of Norway"
       ]
     },
     {
@@ -35613,7 +35867,9 @@
       "uci_per_m": 166.0,
       "wm_weighted": 1.0,
       "races": [
-        "Milaan-Sanremo"
+        "Milaan-Sanremo",
+        "Tour of Belgium",
+        "Vuelta a España"
       ]
     },
     {
