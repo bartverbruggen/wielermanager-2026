@@ -35,40 +35,54 @@ interface RiderTableProps {
 }
 
 // Memoize the table header component
-const TableHeader = memo(({ headerGroup, raceMetadata }: { headerGroup: any; raceMetadata?: Record<string, RaceInfo> }) => (
-  <tr>
-    {headerGroup.headers.map((header: any, idx: number) => {
-      const isSorted = header.column.getIsSorted();
-      const canSort = header.column.getCanSort();
-      const isFirstColumn = idx === 0;
-      const raceName = header.column.columnDef.accessorKey as string;
-      const raceInfo = raceMetadata?.[raceName];
-      
-      return (
-        <th
-          key={header.id}
-          onClick={header.column.getToggleSortingHandler()}
-          style={{ width: `${header.getSize()}px` }}
-          className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 ${
-            canSort ? "cursor-pointer hover:bg-gray-200" : ""
-          } ${isFirstColumn ? "sticky left-0 z-20 bg-gray-100" : ""}`}
-          title={raceInfo?.start_date ? `${raceName} - ${raceInfo.start_date}` : undefined}
-        >
-          <div className="flex items-center gap-2">
-            {flexRender(header.column.columnDef.header, header.getContext())}
-            {raceInfo?.is_uci_wt && <Trophy size={14} className="text-yellow-500" />}
-            {canSort && (
-              <div className="w-4 h-4">
-                {isSorted === "asc" && <ChevronUp size={16} />}
-                {isSorted === "desc" && <ChevronDown size={16} />}
-              </div>
-            )}
-          </div>
-        </th>
-      );
-    })}
-  </tr>
-));
+const TableHeader = memo(
+  ({
+    headerGroup,
+    raceMetadata,
+  }: {
+    headerGroup: any;
+    raceMetadata?: Record<string, RaceInfo>;
+  }) => (
+    <tr>
+      {headerGroup.headers.map((header: any, idx: number) => {
+        const isSorted = header.column.getIsSorted();
+        const canSort = header.column.getCanSort();
+        const isFirstColumn = idx === 0;
+        const raceName = header.column.columnDef.accessorKey as string;
+        const raceInfo = raceMetadata?.[raceName];
+
+        return (
+          <th
+            key={header.id}
+            onClick={header.column.getToggleSortingHandler()}
+            style={{ width: `${header.getSize()}px` }}
+            className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 ${
+              canSort ? "cursor-pointer hover:bg-gray-200" : ""
+            } ${isFirstColumn ? "sticky left-0 z-20 bg-gray-100" : ""}`}
+            title={
+              raceInfo?.start_date
+                ? `${raceName} - ${raceInfo.start_date}`
+                : undefined
+            }
+          >
+            <div className="flex items-center gap-2">
+              {flexRender(header.column.columnDef.header, header.getContext())}
+              {raceInfo?.is_uci_wt && (
+                <Trophy size={20} className="text-yellow-500" />
+              )}
+              {canSort && (
+                <div className="w-4 h-4">
+                  {isSorted === "asc" && <ChevronUp size={16} />}
+                  {isSorted === "desc" && <ChevronDown size={16} />}
+                </div>
+              )}
+            </div>
+          </th>
+        );
+      })}
+    </tr>
+  ),
+);
 
 TableHeader.displayName = "TableHeader";
 
@@ -177,11 +191,8 @@ export default function RiderTable({
         const rider = info.row.original;
         const isRiding = rider.races?.includes(race);
         return (
-          <div className="flex items-center justify-center w-full gap-1">
+          <div className="flex items-center justify-center w-full">
             <Bike className={isRiding ? "text-green-500" : "text-gray-200"} />
-            {raceMetadata?.[race]?.is_uci_wt && isRiding && (
-              <Trophy size={14} className="text-yellow-500" />
-            )}
           </div>
         );
       },
@@ -243,7 +254,11 @@ export default function RiderTable({
         >
           <thead className="bg-gray-100 sticky top-0 z-10">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableHeader key={headerGroup.id} headerGroup={headerGroup} raceMetadata={raceMetadata} />
+              <TableHeader
+                key={headerGroup.id}
+                headerGroup={headerGroup}
+                raceMetadata={raceMetadata}
+              />
             ))}
           </thead>
           <tbody>
