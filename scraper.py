@@ -9,21 +9,76 @@ import json
 import sys
 import re
 import time
+import logging
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from typing import Optional, List, Dict
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # User agent to avoid being blocked
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
 }
 
+# Retry configuration
+MAX_RETRIES = 3
+RETRY_DELAY = 1  # seconds
+TIMEOUT = 15  # seconds
+
 def extract_rider_slug(rider_url: str) -> str:
     """Extract rider slug from rider URL (e.g., 'tadej-pogacar')."""
     if not rider_url:
         return ""
     return rider_url.split('/rider/')[-1].split('/')[0]
+
+def fetch_url_with_retry(url: str, max_retries: int = MAX_RETRIES, initial_delay: int = RETRY_DELAY):
+    """
+    Fetch URL content with exponential backoff retry logic.
+    
+    Args:
+        url: URL to fetch
+        max_retries: Maximum number of retry attempts
+        initial_delay: Initial delay between retries (seconds)
+    
+    Returns:
+        Response content if successful, None otherwise
+    """
+    response = None
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+            response.raise_for_status()
+            return response.content
+        except requests.exceptions.Timeout:
+            logger.warning(f"Timeout on attempt {attempt + 1}/{max_retries} for {url}")
+        except requests.exceptions.ConnectionError:
+            logger.warning(f"Connection error on attempt {attempt + 1}/{max_retries} for {url}")
+        except requests.exceptions.HTTPError as e:
+            if response and response.status_code == 429:  # Rate limited
+                logger.warning(f"Rate limited (429), backing off...")
+                delay = initial_delay * (2 ** attempt)
+                time.sleep(delay)
+                continue
+            else:
+                logger.warning(f"HTTP error on attempt {attempt + 1}/{max_retries}")
+        except requests.exceptions.RequestException as e:
+            logger.warning(f"Request error on attempt {attempt + 1}/{max_retries}: {e}")
+        
+        # Exponential backoff: wait longer between retries
+        if attempt < max_retries - 1:
+            delay = initial_delay * (2 ** attempt)
+            logger.info(f"Retrying in {delay} seconds...")
+            time.sleep(delay)
+    
+    return None
 
 def build_race_startlist_url(race_url: str, year: str = "2026") -> str:
     """Build the full startlist URL for a specific year."""
@@ -41,6 +96,7 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
     """
     Scrape the startlist for a given race using BeautifulSoup.
     Falls back to previous year if current year not available.
+    Uses retry logic for robustness.
     Returns list of dicts with rider data or None if unavailable.
     """
     # Try the requested year first, then fall back to previous year
@@ -48,16 +104,22 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
         startlist_url = build_race_startlist_url(race_url, attempt_year)
         
         try:
-            response = requests.get(startlist_url, headers=HEADERS, timeout=10)
-            response.raise_for_status()
+            # Use retry logic for fetching
+            content = fetch_url_with_retry(startlist_url)
             
-            soup = BeautifulSoup(response.content, 'html.parser')
+            if content is None:
+                logger.warning(f"Failed to fetch {startlist_url} after {MAX_RETRIES} retries")
+                if attempt_year == year:
+                    logger.info(f"Trying {int(attempt_year) - 1}...")
+                continue
+            
+            soup = BeautifulSoup(content, 'html.parser')
             
             # Check if this is actually a startlist page
             page_text = soup.get_text().lower()
             if 'no startlist' in page_text or 'race not found' in page_text:
                 if attempt_year == year:
-                    print(f"  ℹ No startlist for {year}, trying {attempt_year}...", file=sys.stderr)
+                    logger.info(f"No startlist for {year}, trying {int(year) - 1}...")
                 continue
             
             # Find all rider links using targeted search
@@ -109,19 +171,15 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
             
             if riders:
                 if attempt_year != year:
-                    print(f"  ℹ Using {attempt_year} startlist ({len(riders)} riders)", file=sys.stderr)
+                    logger.info(f"Using {attempt_year} startlist ({len(riders)} riders)")
                 else:
-                    print(f"  ✓ Found {len(riders)} riders ({attempt_year})", file=sys.stderr)
+                    logger.info(f"Found {len(riders)} riders ({attempt_year})")
                 return riders
             
-        except requests.exceptions.RequestException as e:
-            if attempt_year == year:
-                print(f"  ⚠ Network error fetching {attempt_year}: {e}", file=sys.stderr)
         except Exception as e:
-            if attempt_year == year:
-                print(f"  ⚠ Parsing error for {attempt_year}: {e}", file=sys.stderr)
+            logger.error(f"Error parsing {attempt_year}: {e}")
     
-    print(f"  ✗ No startlist available", file=sys.stderr)
+    logger.error(f"No startlist available")
     return None
 
 def load_races(races_file: str):
@@ -148,7 +206,7 @@ def enrich_riders_with_races(riders_data, races):
         # Initialize races array (replace existing)
         rider['races'] = []
     
-    print(f"✓ Indexed {len(riders_by_slug)} riders by URL slug\n", file=sys.stderr)
+    logger.info(f"Indexed {len(riders_by_slug)} riders by URL slug\n")
     
     # Scrape each race and add to matching riders
     total_races = len(races)
@@ -156,7 +214,7 @@ def enrich_riders_with_races(riders_data, races):
     skipped_count = 0
     
     for idx, race in enumerate(races):
-        print(f"[{idx + 1}/{total_races}] {race['name']}", file=sys.stderr)
+        logger.info(f"[{idx + 1}/{total_races}] {race['name']}")
         
         race_name = race['name']
         race_url = race['url']
@@ -184,22 +242,22 @@ def enrich_riders_with_races(riders_data, races):
                         matches_in_race += 1
             
             if matches_in_race > 0:
-                print(f"  ✓ Matched {matches_in_race} riders", file=sys.stderr)
+                logger.info(f"  ✓ Matched {matches_in_race} riders")
                 matched_count += matches_in_race
             else:
-                print(f"  ⚠ No riders matched", file=sys.stderr)
+                logger.warning(f"  ⚠ No riders matched")
         
         except Exception as e:
-            print(f"  ✗ Error: {e}", file=sys.stderr)
+            logger.error(f"  ✗ Error: {e}")
             skipped_count += 1
         
         # Add delay to be respectful to the website
         time.sleep(2)
     
-    print(f"\n{'='*60}", file=sys.stderr)
-    print(f"✓ Matched {matched_count} rider-race combinations", file=sys.stderr)
-    print(f"✓ Skipped {skipped_count} races (not available or errors)", file=sys.stderr)
-    print(f"{'='*60}\n", file=sys.stderr)
+    logger.info("=" * 60)
+    logger.info(f"✓ Matched {matched_count} rider-race combinations")
+    logger.info(f"✓ Skipped {skipped_count} races (not available or errors)")
+    logger.info("=" * 60)
     
     return riders_data
 
@@ -207,30 +265,30 @@ def save_riders(riders_data, output_file: str):
     """Save enriched riders data to file."""
     with open(output_file, 'w') as f:
         json.dump(riders_data, f, indent=2, ensure_ascii=False)
-    print(f"✓ Saved enriched riders to {output_file}", file=sys.stderr)
+    logger.info(f"✓ Saved enriched riders to {output_file}")
 
 def main():
     script_dir = Path(__file__).parent
     races_file = script_dir / 'data' / 'races.json'
     riders_file = script_dir / 'data' / 'riders.json'
     
-    print("\n" + "=" * 60, file=sys.stderr)
-    print("Cycling Classics Filter - Race Startlist Scraper", file=sys.stderr)
-    print("=" * 60 + "\n", file=sys.stderr)
+    print("\n" + "=" * 60)
+    print("Cycling Classics Filter - Race Startlist Scraper")
+    print("=" * 60 + "\n")
     
-    print("Loading data...", file=sys.stderr)
+    logger.info("Loading data...")
     races = load_races(str(races_file))
     riders_data = load_riders(str(riders_file))
     
-    print(f"✓ Loaded {len(races)} races", file=sys.stderr)
-    print(f"✓ Loaded {len(riders_data.get('riders', []))} riders", file=sys.stderr)
+    logger.info(f"Loaded {len(races)} races")
+    logger.info(f"Loaded {len(riders_data.get('riders', []))} riders")
     
-    print("\nStarting scraper (fetching startlists)...\n", file=sys.stderr)
+    logger.info("\nStarting scraper (fetching startlists)...\n")
     
     enriched_data = enrich_riders_with_races(riders_data, races)
     save_riders(enriched_data, str(riders_file))
     
-    print("Done! Race data updated successfully.\n", file=sys.stderr)
+    logger.info("Done! Race data updated successfully.\n")
 
 if __name__ == '__main__':
     main()
