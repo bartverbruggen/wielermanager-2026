@@ -183,11 +183,62 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
     logger.error(f"No startlist available")
     return None
 
+def scrape_race_details(race_url: str, year: str = "2026") -> Optional[Dict]:
+     """
+     Scrape race details including start date and UCI classification from race page.
+     Returns dict with 'start_date' and 'is_uci_wt' keys.
+     """
+     # Build race URL if needed
+     if 'procyclingstats.com' not in race_url:
+         race_url = 'https://www.procyclingstats.com' + race_url
+     
+     # Try to get race page (without /startlist)
+     base_url = race_url.split('/race/')[0]
+     race_slug = race_url.split('/race/')[-1].split('/')[0]
+     race_page_url = f"{base_url}/race/{race_slug}/{year}/"
+     
+     try:
+         content = fetch_url_with_retry(race_page_url)
+         if content is None:
+             return None
+         
+         soup = BeautifulSoup(content, 'html.parser')
+         
+         # Extract start date
+         start_date = None
+         date_pattern = re.compile(r'(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December))\s+(\d{4})')
+         
+         # Look for date in common locations
+         page_text = soup.get_text()
+         date_match = date_pattern.search(page_text)
+         if date_match:
+             start_date = date_match.group(1)
+         
+         # Check for UCI WorldTour classification
+         is_uci_wt = False
+         page_html = str(soup)
+         # Look for UCI classification indicators
+         if 'uci worldtour' in page_html.lower() or 'uci wt' in page_html.lower():
+             is_uci_wt = True
+         
+         # Also check for specific championship indicators
+         if 'world championship' in page_html.lower() or 'worlds' in page_html.lower():
+             is_uci_wt = True
+         
+         return {
+             'start_date': start_date,
+             'is_uci_wt': is_uci_wt
+         }
+     
+     except Exception as e:
+         logger.warning(f"Failed to scrape race details from {race_page_url}: {e}")
+         return None
+
 def load_races(races_file: str):
-    """Load races from races.json."""
-    with open(races_file, 'r') as f:
-        data = json.load(f)
-    return data.get('races', [])
+     """Load races from races.json."""
+     with open(races_file, 'r') as f:
+         data = json.load(f)
+     return data.get('races', [])
 
 def load_riders(riders_file: str):
     """Load riders from riders.json."""
@@ -195,72 +246,84 @@ def load_riders(riders_file: str):
         return json.load(f)
 
 def enrich_riders_with_races(riders_data, races):
-    """
-    Enrich riders data with race participation by scraping race startlists.
-    """
-    # Create a mapping of rider slug to rider object
-    riders_by_slug = {}
-    for rider in riders_data.get('riders', []):
-        slug = extract_rider_slug(rider.get('url', ''))
-        if slug:
-            riders_by_slug[slug] = rider
-        # Initialize races array (replace existing)
-        rider['races'] = []
-    
-    logger.info(f"Indexed {len(riders_by_slug)} riders by URL slug\n")
-    
-    # Scrape each race and add to matching riders
-    total_races = len(races)
-    matched_count = 0
-    skipped_count = 0
-    
-    for idx, race in enumerate(races):
-        logger.info(f"[{idx + 1}/{total_races}] {race['name']}")
-        
-        race_name = race['name']
-        race_url = race['url']
-        
-        try:
-            startlist_data = scrape_race_startlist(race_url, year="2026")
-            
-            if startlist_data is None:
-                skipped_count += 1
-                time.sleep(1)
-                continue
-            
-            # Match riders from startlist to our riders
-            matches_in_race = 0
-            for rider_entry in startlist_data:
-                if not rider_entry or 'slug' not in rider_entry:
-                    continue
-                
-                rider_slug = rider_entry['slug']
-                
-                if rider_slug in riders_by_slug:
-                    our_rider = riders_by_slug[rider_slug]
-                    if race_name not in our_rider.get('races', []):
-                        our_rider['races'].append(race_name)
-                        matches_in_race += 1
-            
-            if matches_in_race > 0:
-                logger.info(f"  ✓ Matched {matches_in_race} riders")
-                matched_count += matches_in_race
-            else:
-                logger.warning(f"  ⚠ No riders matched")
-        
-        except Exception as e:
-            logger.error(f"  ✗ Error: {e}")
-            skipped_count += 1
-        
-        # Add delay to be respectful to the website
-        time.sleep(2)
-    
-    logger.info("=" * 60)
-    logger.info(f"✓ Matched {matched_count} rider-race combinations")
-    logger.info(f"✓ Skipped {skipped_count} races (not available or errors)")
-    logger.info("=" * 60)
-    
-    return riders_data
+     """
+     Enrich riders data with race participation by scraping race startlists.
+     Also enriches races with date and UCI WorldTour info.
+     """
+     # Create a mapping of rider slug to rider object
+     riders_by_slug = {}
+     for rider in riders_data.get('riders', []):
+         slug = extract_rider_slug(rider.get('url', ''))
+         if slug:
+             riders_by_slug[slug] = rider
+         # Initialize races array (replace existing)
+         rider['races'] = []
+     
+     logger.info(f"Indexed {len(riders_by_slug)} riders by URL slug\n")
+     
+     # Scrape each race and add to matching riders
+     total_races = len(races)
+     matched_count = 0
+     skipped_count = 0
+     
+     for idx, race in enumerate(races):
+         logger.info(f"[{idx + 1}/{total_races}] {race['name']}")
+         
+         race_name = race['name']
+         race_url = race['url']
+         
+         try:
+             # First, scrape race details (date, UCI classification)
+             race_details = scrape_race_details(race_url, year="2026")
+             if race_details:
+                 race['start_date'] = race_details.get('start_date')
+                 race['is_uci_wt'] = race_details.get('is_uci_wt', False)
+                 logger.info(f"  Date: {race_details.get('start_date')}, UCI WT: {race_details.get('is_uci_wt')}")
+             
+             # Then scrape the startlist
+             startlist_data = scrape_race_startlist(race_url, year="2026")
+             
+             if startlist_data is None:
+                 skipped_count += 1
+                 time.sleep(1)
+                 continue
+             
+             # Match riders from startlist to our riders
+             matches_in_race = 0
+             for rider_entry in startlist_data:
+                 if not rider_entry or 'slug' not in rider_entry:
+                     continue
+                 
+                 rider_slug = rider_entry['slug']
+                 
+                 if rider_slug in riders_by_slug:
+                     our_rider = riders_by_slug[rider_slug]
+                     if race_name not in our_rider.get('races', []):
+                         our_rider['races'].append(race_name)
+                         matches_in_race += 1
+             
+             if matches_in_race > 0:
+                 logger.info(f"  ✓ Matched {matches_in_race} riders")
+                 matched_count += matches_in_race
+             else:
+                 logger.warning(f"  ⚠ No riders matched")
+         
+         except Exception as e:
+             logger.error(f"  ✗ Error: {e}")
+             skipped_count += 1
+         
+         # Add delay to be respectful to the website
+         time.sleep(2)
+     
+     logger.info("=" * 60)
+     logger.info(f"✓ Matched {matched_count} rider-race combinations")
+     logger.info(f"✓ Skipped {skipped_count} races (not available or errors)")
+     logger.info("=" * 60)
+     
+     # Update races in riders_data
+     riders_data['races'] = races
+     
+     return riders_data
 
 def save_riders(riders_data, output_file: str):
     """Save enriched riders data to file with updated timestamp."""

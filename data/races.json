@@ -3,107 +3,159 @@
   "races": [
     {
       "name": "Omloop Nieuwsblad",
-      "url": "https://www.procyclingstats.com/race/omloop-het-nieuwsblad"
+      "url": "https://www.procyclingstats.com/race/omloop-het-nieuwsblad",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Kuurne-Brussel-Kuurne",
-      "url": "https://www.procyclingstats.com/race/kuurne-brussel-kuurne"
+      "url": "https://www.procyclingstats.com/race/kuurne-brussel-kuurne",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Samyn Classic",
-      "url": "https://www.procyclingstats.com/race/gp-samyn"
+      "url": "https://www.procyclingstats.com/race/gp-samyn",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Strade Bianche",
-      "url": "https://www.procyclingstats.com/race/strade-bianche"
+      "url": "https://www.procyclingstats.com/race/strade-bianche",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Nokere Koerse",
-      "url": "https://www.procyclingstats.com/race/nokere-koerse"
+      "url": "https://www.procyclingstats.com/race/nokere-koerse",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Bredene Koksijde Classic",
-      "url": "https://www.procyclingstats.com/race/bredene-koksijde-classic"
+      "url": "https://www.procyclingstats.com/race/bredene-koksijde-classic",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Milaan-Sanremo",
-      "url": "https://www.procyclingstats.com/race/milano-sanremo"
+      "url": "https://www.procyclingstats.com/race/milano-sanremo",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Ronde van Brugge",
-      "url": "https://www.procyclingstats.com/race/classic-brugge-de-panne"
+      "url": "https://www.procyclingstats.com/race/classic-brugge-de-panne",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "E3 Saxo Classic",
-      "url": "https://www.procyclingstats.com/race/e3-harelbeke"
+      "url": "https://www.procyclingstats.com/race/e3-harelbeke",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "In Flanders Fields",
-      "url": "https://www.procyclingstats.com/race/gent-wevelgem"
+      "url": "https://www.procyclingstats.com/race/gent-wevelgem",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Dwars door Vlaanderen",
-      "url": "https://www.procyclingstats.com/race/dwars-door-vlaanderen"
+      "url": "https://www.procyclingstats.com/race/dwars-door-vlaanderen",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Ronde van Vlaanderen",
-      "url": "https://www.procyclingstats.com/race/ronde-van-vlaanderen"
+      "url": "https://www.procyclingstats.com/race/ronde-van-vlaanderen",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Scheldeprijs",
-      "url": "https://www.procyclingstats.com/race/scheldeprijs"
+      "url": "https://www.procyclingstats.com/race/scheldeprijs",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Parijs-Roubaix",
-      "url": "https://www.procyclingstats.com/race/paris-roubaix"
+      "url": "https://www.procyclingstats.com/race/paris-roubaix",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Ronde van Limburg",
-      "url": "https://www.procyclingstats.com/race/ronde-van-limburg"
+      "url": "https://www.procyclingstats.com/race/ronde-van-limburg",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Brabantse Pijl",
-      "url": "https://www.procyclingstats.com/race/brabantse-pijl"
+      "url": "https://www.procyclingstats.com/race/brabantse-pijl",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Amstel Gold Race",
-      "url": "https://www.procyclingstats.com/race/amstel-gold-race"
+      "url": "https://www.procyclingstats.com/race/amstel-gold-race",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Waalse Pijl",
-      "url": "https://www.procyclingstats.com/race/la-fleche-wallonne"
+      "url": "https://www.procyclingstats.com/race/la-fleche-wallonne",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Luik-Bastenaken-Luik",
-      "url": "https://www.procyclingstats.com/race/luik-bastenaken-luik"
+      "url": "https://www.procyclingstats.com/race/luik-bastenaken-luik",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Tour of Norway",
-      "url": "https://www.procyclingstats.com/race/tour-of-norway"
+      "url": "https://www.procyclingstats.com/race/tour-of-norway",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Giro d'Italia",
-      "url": "https://www.procyclingstats.com/race/giro-d-italia"
+      "url": "https://www.procyclingstats.com/race/giro-d-italia",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Tour de Suisse",
-      "url": "https://www.procyclingstats.com/race/tour-de-suisse"
+      "url": "https://www.procyclingstats.com/race/tour-de-suisse",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Tour de France",
-      "url": "https://www.procyclingstats.com/race/tour-de-france"
+      "url": "https://www.procyclingstats.com/race/tour-de-france",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Tour of Belgium",
-      "url": "https://www.procyclingstats.com/race/tour-of-belgium"
+      "url": "https://www.procyclingstats.com/race/tour-of-belgium",
+      "start_date": null,
+      "is_uci_wt": false
     },
     {
       "name": "Vuelta a España",
-      "url": "https://www.procyclingstats.com/race/vuelta-a-espana"
+      "url": "https://www.procyclingstats.com/race/vuelta-a-espana",
+      "start_date": null,
+      "is_uci_wt": true
     },
     {
       "name": "Il Lombardia",
-      "url": "https://www.procyclingstats.com/race/il-lombardia"
+      "url": "https://www.procyclingstats.com/race/il-lombardia",
+      "start_date": null,
+      "is_uci_wt": true
     }
   ]
 }

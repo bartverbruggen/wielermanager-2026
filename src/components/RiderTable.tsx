@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-table";
 import { useState, useMemo, memo, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { ChevronUp, ChevronDown, Bike } from "lucide-react";
+import { ChevronUp, ChevronDown, Bike, Trophy } from "lucide-react";
 
 interface Rider {
   name: string;
@@ -21,19 +21,29 @@ interface Rider {
   [key: string]: unknown;
 }
 
+interface RaceInfo {
+  name: string;
+  start_date: string | null;
+  is_uci_wt: boolean;
+}
+
 interface RiderTableProps {
   riders: Rider[];
   allRaces: string[];
   selectedRaces: Set<string>;
+  raceMetadata?: Record<string, RaceInfo>;
 }
 
 // Memoize the table header component
-const TableHeader = memo(({ headerGroup }: { headerGroup: any }) => (
+const TableHeader = memo(({ headerGroup, raceMetadata }: { headerGroup: any; raceMetadata?: Record<string, RaceInfo> }) => (
   <tr>
     {headerGroup.headers.map((header: any, idx: number) => {
       const isSorted = header.column.getIsSorted();
       const canSort = header.column.getCanSort();
       const isFirstColumn = idx === 0;
+      const raceName = header.column.columnDef.accessorKey as string;
+      const raceInfo = raceMetadata?.[raceName];
+      
       return (
         <th
           key={header.id}
@@ -42,9 +52,11 @@ const TableHeader = memo(({ headerGroup }: { headerGroup: any }) => (
           className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 ${
             canSort ? "cursor-pointer hover:bg-gray-200" : ""
           } ${isFirstColumn ? "sticky left-0 z-20 bg-gray-100" : ""}`}
+          title={raceInfo?.start_date ? `${raceName} - ${raceInfo.start_date}` : undefined}
         >
           <div className="flex items-center gap-2">
             {flexRender(header.column.columnDef.header, header.getContext())}
+            {raceInfo?.is_uci_wt && <Trophy size={14} className="text-yellow-500" />}
             {canSort && (
               <div className="w-4 h-4">
                 {isSorted === "asc" && <ChevronUp size={16} />}
@@ -86,9 +98,23 @@ export default function RiderTable({
   riders,
   allRaces,
   selectedRaces,
+  raceMetadata,
 }: RiderTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const tableContainerRef = useRef<HTMLDivElement>(null);
+
+  // Parse date string to a comparable format
+  const parseRaceDate = (dateStr: string | null | undefined): Date => {
+    if (!dateStr) return new Date("9999-12-31"); // Put races without dates at the end
+    try {
+      // Try to parse various date formats
+      const date = new Date(dateStr);
+      if (!isNaN(date.getTime())) {
+        return date;
+      }
+    } catch {}
+    return new Date("9999-12-31");
+  };
 
   // Memoize columns and prevent recreation unless allRaces changes significantly
   const columns = useMemo<ColumnDef<Rider>[]>(() => {
@@ -130,8 +156,19 @@ export default function RiderTable({
     ];
 
     // Add race columns - only for selected races or all if none selected
-    const racesToShow =
-      selectedRaces.size > 0 ? Array.from(selectedRaces).sort() : allRaces;
+    let racesToShow =
+      selectedRaces.size > 0 ? Array.from(selectedRaces) : allRaces;
+
+    // Sort races by start_date from metadata
+    if (raceMetadata) {
+      racesToShow = racesToShow.sort((a, b) => {
+        const dateA = parseRaceDate(raceMetadata[a]?.start_date);
+        const dateB = parseRaceDate(raceMetadata[b]?.start_date);
+        return dateA.getTime() - dateB.getTime();
+      });
+    } else {
+      racesToShow = racesToShow.sort();
+    }
 
     const raceColumns: ColumnDef<Rider>[] = racesToShow.map((race) => ({
       accessorKey: race,
@@ -140,8 +177,11 @@ export default function RiderTable({
         const rider = info.row.original;
         const isRiding = rider.races?.includes(race);
         return (
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center justify-center w-full gap-1">
             <Bike className={isRiding ? "text-green-500" : "text-gray-200"} />
+            {raceMetadata?.[race]?.is_uci_wt && isRiding && (
+              <Trophy size={14} className="text-yellow-500" />
+            )}
           </div>
         );
       },
@@ -149,7 +189,7 @@ export default function RiderTable({
     }));
 
     return [...baseColumns, ...raceColumns];
-  }, [allRaces, selectedRaces]);
+  }, [allRaces, selectedRaces, raceMetadata]);
 
   const table = useReactTable({
     data: riders,
@@ -203,7 +243,7 @@ export default function RiderTable({
         >
           <thead className="bg-gray-100 sticky top-0 z-10">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableHeader key={headerGroup.id} headerGroup={headerGroup} />
+              <TableHeader key={headerGroup.id} headerGroup={headerGroup} raceMetadata={raceMetadata} />
             ))}
           </thead>
           <tbody>

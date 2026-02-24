@@ -21,6 +21,12 @@ interface Rider {
 interface Data {
   updated: string;
   riders: Rider[];
+  races?: Array<{
+    name: string;
+    url: string;
+    start_date?: string | null;
+    is_uci_wt?: boolean;
+  }>;
 }
 
 function App() {
@@ -287,6 +293,16 @@ function App() {
               riders={filteredRiders}
               allRaces={allRaces}
               selectedRaces={selectedRaces}
+              raceMetadata={
+                data?.races?.reduce((acc, race) => {
+                  acc[race.name] = {
+                    name: race.name,
+                    start_date: race.start_date || null,
+                    is_uci_wt: race.is_uci_wt || false,
+                  };
+                  return acc;
+                }, {} as Record<string, any>)
+              }
             />
 
             <footer className="mt-8 text-center text-gray-600">
