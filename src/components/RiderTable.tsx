@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-table";
 import { useState, useMemo, memo, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown, Check } from "lucide-react";
 
 interface Rider {
   name: string;
@@ -28,11 +28,7 @@ interface RiderTableProps {
 }
 
 // Memoize the table header component
-const TableHeader = memo(({ 
-  headerGroup, 
-}: { 
-  headerGroup: any;
-}) => (
+const TableHeader = memo(({ headerGroup }: { headerGroup: any }) => (
   <tr>
     {headerGroup.headers.map((header: any) => {
       const isSorted = header.column.getIsSorted();
@@ -47,10 +43,7 @@ const TableHeader = memo(({
           } ${header.column.columnDef.meta?.sticky ? "sticky left-0 bg-gray-100 z-10" : ""}`}
         >
           <div className="flex items-center gap-2">
-            {flexRender(
-              header.column.columnDef.header,
-              header.getContext(),
-            )}
+            {flexRender(header.column.columnDef.header, header.getContext())}
             {canSort && (
               <div className="w-4 h-4">
                 {isSorted === "asc" && <ChevronUp size={16} />}
@@ -67,19 +60,13 @@ const TableHeader = memo(({
 TableHeader.displayName = "TableHeader";
 
 // Memoize the table row component
-const TableRow = memo(({ 
-  row, 
-  idx,
-}: { 
-  row: any;
-  idx: number;
-}) => (
-  <tr 
+const TableRow = memo(({ row, idx }: { row: any; idx: number }) => (
+  <tr
     className={`border-b border-gray-200 ${idx % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 h-14`}
   >
     {row.getVisibleCells().map((cell: any) => (
-      <td 
-        key={cell.id} 
+      <td
+        key={cell.id}
         style={{ width: cell.column.getSize() }}
         className={`px-4 py-3 text-sm ${cell.column.columnDef.meta?.sticky ? "sticky left-0 bg-inherit" : ""}`}
       >
@@ -140,9 +127,8 @@ export default function RiderTable({
     ];
 
     // Add race columns - only for selected races or all if none selected
-    const racesToShow = selectedRaces.size > 0 
-      ? Array.from(selectedRaces).sort()
-      : allRaces;
+    const racesToShow =
+      selectedRaces.size > 0 ? Array.from(selectedRaces).sort() : allRaces;
 
     const raceColumns: ColumnDef<Rider>[] = racesToShow.map((race) => ({
       accessorKey: race,
@@ -152,12 +138,9 @@ export default function RiderTable({
         const isRiding = rider.races?.includes(race);
         return (
           <div className="flex items-center justify-center">
-            <input
-              type="checkbox"
-              checked={isRiding || false}
-              readOnly
-              disabled
-              className={`w-4 h-4 cursor-not-allowed ${isRiding ? "accent-green-500" : ""}`}
+            <Check
+              size={16}
+              className={`${isRiding ? "text-green-500 " : "text-gray-100"}`}
             />
           </div>
         );
@@ -193,12 +176,17 @@ export default function RiderTable({
   const totalSize = rowVirtualizer.getTotalSize();
 
   const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
-  const paddingBottom = virtualRows.length > 0 ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0) : 0;
+  const paddingBottom =
+    virtualRows.length > 0
+      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
+      : 0;
 
   if (riders.length === 0) {
     return (
       <div className="bg-white p-8 rounded-lg shadow">
-        <p className="text-center text-gray-600">No riders match the selected races.</p>
+        <p className="text-center text-gray-600">
+          No riders match the selected races.
+        </p>
       </div>
     );
   }
@@ -215,10 +203,7 @@ export default function RiderTable({
         </table>
       </div>
 
-      <div 
-        ref={tableContainerRef}
-        className="overflow-y-auto flex-grow"
-      >
+      <div ref={tableContainerRef} className="overflow-y-auto flex-grow">
         <table className="w-full border-collapse">
           <tbody>
             {paddingTop > 0 && (
@@ -229,11 +214,7 @@ export default function RiderTable({
             {virtualRows.map((virtualRow, idx) => {
               const row = rows[virtualRow.index];
               return (
-                <TableRow 
-                  key={row.id} 
-                  row={row} 
-                  idx={virtualRow.index % 2}
-                />
+                <TableRow key={row.id} row={row} idx={virtualRow.index % 2} />
               );
             })}
             {paddingBottom > 0 && (
