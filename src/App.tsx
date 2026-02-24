@@ -31,6 +31,7 @@ interface Data {
 
 function App() {
   const [data, setData] = useState<Data | null>(null);
+  const [raceMetadata, setRaceMetadata] = useState<Record<string, any>>({});
   const [selectedRaces, setSelectedRaces] = useState<Set<string>>(new Set());
   const [selectedTeams, setSelectedTeams] = useState<Set<string>>(new Set());
   const [selectedRiders, setSelectedRiders] = useState<Set<string>>(new Set());
@@ -67,7 +68,7 @@ function App() {
     }
   };
 
-  // Load riders data
+  // Load riders data and race metadata
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -77,6 +78,26 @@ function App() {
         if (!response.ok) throw new Error("Failed to load riders data");
         const jsonData: Data = await response.json();
         setData(jsonData);
+
+        // Load race metadata from races.json
+        const racesResponse = await fetch(
+          `${import.meta.env.BASE_URL}data/races.json`,
+        );
+        if (racesResponse.ok) {
+          const racesData = await racesResponse.json();
+          const metadata: Record<string, any> = {};
+          if (racesData.races) {
+            racesData.races.forEach((race: any) => {
+              metadata[race.name] = {
+                name: race.name,
+                start_date: race.start_date || null,
+                is_uci_wt: race.is_uci_wt || false,
+              };
+            });
+          }
+          setRaceMetadata(metadata);
+        }
+
         setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -293,16 +314,7 @@ function App() {
               riders={filteredRiders}
               allRaces={allRaces}
               selectedRaces={selectedRaces}
-              raceMetadata={
-                data?.races?.reduce((acc, race) => {
-                  acc[race.name] = {
-                    name: race.name,
-                    start_date: race.start_date || null,
-                    is_uci_wt: race.is_uci_wt || false,
-                  };
-                  return acc;
-                }, {} as Record<string, any>)
-              }
+              raceMetadata={raceMetadata}
             />
 
             <footer className="mt-8 text-center text-gray-600">
