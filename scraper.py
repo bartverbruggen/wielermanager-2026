@@ -11,6 +11,7 @@ import re
 import time
 import logging
 from pathlib import Path
+from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -262,10 +263,14 @@ def enrich_riders_with_races(riders_data, races):
     return riders_data
 
 def save_riders(riders_data, output_file: str):
-    """Save enriched riders data to file."""
+    """Save enriched riders data to file with updated timestamp."""
+    # Add current timestamp in ISO 8601 format (more universal)
+    riders_data['updated'] = datetime.utcnow().isoformat() + 'Z'
+    
     with open(output_file, 'w') as f:
         json.dump(riders_data, f, indent=2, ensure_ascii=False)
     logger.info(f"✓ Saved enriched riders to {output_file}")
+    logger.info(f"✓ Updated timestamp: {riders_data['updated']}")
 
 def main():
     script_dir = Path(__file__).parent
