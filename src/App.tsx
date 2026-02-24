@@ -1,7 +1,8 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import RiderTable from './components/RiderTable'
-import RaceFilter from './components/RaceFilter'
+import RacesDropdown from './components/RacesDropdown'
+import RidersFilter from './components/RidersFilter'
 import TeamFilter from './components/TeamFilter'
 import UCIRankFilter from './components/UCIRankFilter'
 import RiderSearch from './components/RiderSearch'
@@ -27,6 +28,7 @@ function App() {
    const [filteredRiders, setFilteredRiders] = useState<Rider[]>([])
    const [selectedRaces, setSelectedRaces] = useState<Set<string>>(new Set())
    const [selectedTeams, setSelectedTeams] = useState<Set<string>>(new Set())
+   const [selectedRiders, setSelectedRiders] = useState<Set<string>>(new Set())
    const [searchQuery, setSearchQuery] = useState<string>('')
    const [maxUCIRank, setMaxUCIRank] = useState<number>(2096)
    const [loading, setLoading] = useState(true)
@@ -79,65 +81,76 @@ function App() {
     loadData()
   }, [])
 
-  // Apply race, team, search, and UCI rank filters
-  const applyFilters = (races: Set<string>, teams: Set<string>, search: string, uciRank: number) => {
-    if (!data) return
+   // Apply race, team, search, and UCI rank filters
+   const applyFilters = (races: Set<string>, teams: Set<string>, riders: Set<string>, search: string, uciRank: number) => {
+     if (!data) return
 
-    let filtered = data.riders
+     let filtered = data.riders
 
-    // Apply race filter
-    if (races.size > 0) {
-      filtered = filtered.filter(rider =>
-        rider.races && rider.races.some(race => races.has(race))
-      )
-    }
+     // Apply rider filter
+     if (riders.size > 0) {
+       filtered = filtered.filter(rider => riders.has(rider.name))
+     }
 
-    // Apply team filter
-    if (teams.size > 0) {
-      filtered = filtered.filter(rider => teams.has(rider.team))
-    }
+     // Apply race filter
+     if (races.size > 0) {
+       filtered = filtered.filter(rider =>
+         rider.races && rider.races.some(race => races.has(race))
+       )
+     }
 
-    // Apply UCI rank filter
-    filtered = filtered.filter(rider => {
-      const rank = rider.uci_rank || 9999
-      return rank <= uciRank
-    })
+     // Apply team filter
+     if (teams.size > 0) {
+       filtered = filtered.filter(rider => teams.has(rider.team))
+     }
 
-    // Apply search filter
-    if (search.trim()) {
-      const lowerSearch = search.toLowerCase()
-      filtered = filtered.filter(rider =>
-        rider.name.toLowerCase().includes(lowerSearch) ||
-        rider.team.toLowerCase().includes(lowerSearch)
-      )
-    }
+     // Apply UCI rank filter
+     filtered = filtered.filter(rider => {
+       const rank = rider.uci_rank || 9999
+       return rank <= uciRank
+     })
 
-    setFilteredRiders(filtered)
-  }
+     // Apply search filter
+     if (search.trim()) {
+       const lowerSearch = search.toLowerCase()
+       filtered = filtered.filter(rider =>
+         rider.name.toLowerCase().includes(lowerSearch) ||
+         rider.team.toLowerCase().includes(lowerSearch)
+       )
+     }
 
-  // Handle race filter changes
-  const handleRaceFilterChange = (races: Set<string>) => {
-    setSelectedRaces(races)
-    applyFilters(races, selectedTeams, searchQuery, maxUCIRank)
-  }
+     setFilteredRiders(filtered)
+   }
 
-  // Handle team filter changes
-  const handleTeamFilterChange = (teams: Set<string>) => {
-    setSelectedTeams(teams)
-    applyFilters(selectedRaces, teams, searchQuery, maxUCIRank)
-  }
+   // Handle race filter changes
+   const handleRaceFilterChange = (races: Set<string>) => {
+     setSelectedRaces(races)
+     applyFilters(races, selectedTeams, selectedRiders, searchQuery, maxUCIRank)
+   }
 
-  // Handle search changes
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query)
-    applyFilters(selectedRaces, selectedTeams, query, maxUCIRank)
-  }
+   // Handle team filter changes
+   const handleTeamFilterChange = (teams: Set<string>) => {
+     setSelectedTeams(teams)
+     applyFilters(selectedRaces, teams, selectedRiders, searchQuery, maxUCIRank)
+   }
 
-  // Handle UCI rank filter changes
-  const handleUCIRankChange = (rank: number) => {
-    setMaxUCIRank(rank)
-    applyFilters(selectedRaces, selectedTeams, searchQuery, rank)
-  }
+   // Handle rider filter changes
+   const handleRiderFilterChange = (riders: Set<string>) => {
+     setSelectedRiders(riders)
+     applyFilters(selectedRaces, selectedTeams, riders, searchQuery, maxUCIRank)
+   }
+
+   // Handle search changes
+   const handleSearchChange = (query: string) => {
+     setSearchQuery(query)
+     applyFilters(selectedRaces, selectedTeams, selectedRiders, query, maxUCIRank)
+   }
+
+   // Handle UCI rank filter changes
+   const handleUCIRankChange = (rank: number) => {
+     setMaxUCIRank(rank)
+     applyFilters(selectedRaces, selectedTeams, selectedRiders, searchQuery, rank)
+   }
 
   if (loading) {
     return <div className="container"><p>Loading data...</p></div>
@@ -176,39 +189,41 @@ function App() {
          })()}
        </header>
 
-      <RiderSearch
-        searchQuery={searchQuery}
-        onSearchChange={handleSearchChange}
-      />
+       <div className="filters-sidebar">
+         <RacesDropdown
+           races={allRaces}
+           selectedRaces={selectedRaces}
+           onRacesChange={handleRaceFilterChange}
+         />
 
-      <div className="filters-container">
-        <div className="filter-section">
-          <RaceFilter
-            races={allRaces}
-            selectedRaces={selectedRaces}
-            onRacesChange={handleRaceFilterChange}
-          />
-        </div>
-        <div className="filter-section">
-          <TeamFilter
-            teams={allTeams}
-            selectedTeams={selectedTeams}
-            onTeamsChange={handleTeamFilterChange}
-          />
-        </div>
-        <div className="filter-section">
-          <UCIRankFilter
-            maxRank={maxUCIRank}
-            onRankChange={handleUCIRankChange}
-          />
-        </div>
-      </div>
+         <RidersFilter
+           riders={data?.riders || []}
+           selectedRiders={selectedRiders}
+           onRidersChange={handleRiderFilterChange}
+         />
 
-      <RiderTable
-        riders={filteredRiders}
-        allRaces={allRaces}
-        selectedRaces={selectedRaces}
-      />
+         <RiderSearch
+           searchQuery={searchQuery}
+           onSearchChange={handleSearchChange}
+         />
+
+         <TeamFilter
+           teams={allTeams}
+           selectedTeams={selectedTeams}
+           onTeamsChange={handleTeamFilterChange}
+         />
+
+         <UCIRankFilter
+           maxRank={maxUCIRank}
+           onRankChange={handleUCIRankChange}
+         />
+       </div>
+
+       <RiderTable
+         riders={filteredRiders}
+         allRaces={allRaces}
+         selectedRaces={selectedRaces}
+       />
 
       <footer>
         <p>Showing {filteredRiders.length} of {data.riders.length} riders</p>

@@ -1,0 +1,75 @@
+.riders-filter {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.filter-search {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+}
+
+.rider-name {
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.rider-team {
+  font-size: 12px;
+  color: #666;
+}
+
+.selected-riders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rider-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tag-remove {
+  background: none;
+  border: none;
+  color: #7b1fa2;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.tag-remove:hover {
+  opacity: 0.7;
+}

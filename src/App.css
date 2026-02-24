@@ -1,7 +1,9 @@
 .container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -26,15 +28,13 @@ header h1 {
    font-weight: 500;
 }
 
-.filters-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.filters-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
   margin-bottom: 20px;
-}
-
-.filter-section {
-  flex: 1;
+  align-self: flex-start;
 }
 
 footer {
@@ -53,17 +53,13 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .filters-container {
-    grid-template-columns: 1fr;
-  }
-
   .container {
     padding: 15px;
   }
-}
 
-@media (max-width: 1200px) {
-  .filters-container {
-    grid-template-columns: repeat(2, 1fr);
+  .filters-sidebar {
+    width: 100%;
+    max-width: 100%;
   }
 }
+
