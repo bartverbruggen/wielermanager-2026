@@ -52,6 +52,7 @@ export default function RiderTable({
           );
         },
         size: 200,
+        meta: { sticky: true },
       },
       {
         accessorKey: "team",
@@ -128,13 +129,15 @@ export default function RiderTable({
                   const isSorted = header.column.getIsSorted();
                   return (
                     <th
-                      key={header.id}
-                      onClick={header.column.getToggleSortingHandler()}
-                      style={{ width: header.getSize() }}
-                      className={`${
-                        header.column.getCanSort() ? "sortable" : ""
-                      } ${isSorted ? `sorted-${isSorted}` : ""}`}
-                    >
+                       key={header.id}
+                       onClick={header.column.getToggleSortingHandler()}
+                       style={{ width: header.getSize() }}
+                       className={`${
+                         header.column.getCanSort() ? "sortable" : ""
+                       } ${isSorted ? `sorted-${isSorted}` : ""} ${
+                         header.column.columnDef.meta?.sticky ? "sticky-column" : ""
+                       }`}
+                     >
                       <div className="header-content">
                         {flexRender(
                           header.column.columnDef.header,
@@ -159,11 +162,11 @@ export default function RiderTable({
           <tbody>
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} style={{ width: cell.column.getSize() }}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
+               {row.getVisibleCells().map((cell) => (
+                   <td key={cell.id} style={{ width: cell.column.getSize() }} className={cell.column.columnDef.meta?.sticky ? "sticky-column" : ""}>
+                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                   </td>
+                 ))}
               </tr>
             ))}
           </tbody>
