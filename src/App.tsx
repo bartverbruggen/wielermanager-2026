@@ -1,11 +1,11 @@
-import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import RiderTable from "./components/RiderTable";
 import RacesDropdown from "./components/RacesDropdown";
 import RidersFilter from "./components/RidersFilter";
 import TeamFilter from "./components/TeamFilter";
 import UCIRankFilter from "./components/UCIRankFilter";
 import RiderSearch from "./components/RiderSearch";
+import FilterBar from "./components/FilterBar";
 
 interface Rider {
   name: string;
@@ -25,7 +25,6 @@ interface Data {
 
 function App() {
   const [data, setData] = useState<Data | null>(null);
-  const [filteredRiders, setFilteredRiders] = useState<Rider[]>([]);
   const [selectedRaces, setSelectedRaces] = useState<Set<string>>(new Set());
   const [selectedTeams, setSelectedTeams] = useState<Set<string>>(new Set());
   const [selectedRiders, setSelectedRiders] = useState<Set<string>>(new Set());
@@ -72,7 +71,6 @@ function App() {
         if (!response.ok) throw new Error("Failed to load riders data");
         const jsonData: Data = await response.json();
         setData(jsonData);
-        setFilteredRiders(jsonData.riders);
         setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -83,116 +81,126 @@ function App() {
     loadData();
   }, []);
 
-  // Apply race, team, search, and UCI rank filters
-  const applyFilters = (
-    races: Set<string>,
-    teams: Set<string>,
-    riders: Set<string>,
-    search: string,
-    uciRank: number,
-  ) => {
-    if (!data) return;
+  // Apply all filters in a single pass for better performance
+  const filteredRiders = useMemo(() => {
+    if (!data) return [];
 
-    let filtered = data.riders;
+    const racesSet = selectedRaces;
+    const teamsSet = selectedTeams;
+    const ridersSet = selectedRiders;
+    const hasRaceFilter = racesSet.size > 0;
+    const hasTeamFilter = teamsSet.size > 0;
+    const hasRiderFilter = ridersSet.size > 0;
+    const hasSearchFilter = searchQuery.trim().length > 0;
+    const lowerSearchQuery = searchQuery.toLowerCase();
 
-    // Apply rider filter
-    if (riders.size > 0) {
-      filtered = filtered.filter((rider) => riders.has(rider.name));
-    }
+    return data.riders.filter((rider) => {
+      // Apply rider filter
+      if (hasRiderFilter && !ridersSet.has(rider.name)) {
+        return false;
+      }
 
-    // Apply race filter
-    if (races.size > 0) {
-      filtered = filtered.filter(
-        (rider) => rider.races && rider.races.some((race) => races.has(race)),
-      );
-    }
+      // Apply race filter
+      if (hasRaceFilter && (!rider.races || !rider.races.some((race) => racesSet.has(race)))) {
+        return false;
+      }
 
-    // Apply team filter
-    if (teams.size > 0) {
-      filtered = filtered.filter((rider) => teams.has(rider.team));
-    }
+      // Apply team filter
+      if (hasTeamFilter && !teamsSet.has(rider.team)) {
+        return false;
+      }
 
-    // Apply UCI rank filter
-    filtered = filtered.filter((rider) => {
+      // Apply UCI rank filter
       const rank = rider.uci_rank || 9999;
-      return rank <= uciRank;
+      if (rank > maxUCIRank) {
+        return false;
+      }
+
+      // Apply search filter
+      if (hasSearchFilter) {
+        const lowerName = rider.name.toLowerCase();
+        const lowerTeam = rider.team.toLowerCase();
+        if (!lowerName.includes(lowerSearchQuery) && !lowerTeam.includes(lowerSearchQuery)) {
+          return false;
+        }
+      }
+
+      return true;
     });
-
-    // Apply search filter
-    if (search.trim()) {
-      const lowerSearch = search.toLowerCase();
-      filtered = filtered.filter(
-        (rider) =>
-          rider.name.toLowerCase().includes(lowerSearch) ||
-          rider.team.toLowerCase().includes(lowerSearch),
-      );
-    }
-
-    setFilteredRiders(filtered);
-  };
+  }, [data, selectedRaces, selectedTeams, selectedRiders, searchQuery, maxUCIRank]);
 
   // Handle race filter changes
   const handleRaceFilterChange = (races: Set<string>) => {
     setSelectedRaces(races);
-    applyFilters(races, selectedTeams, selectedRiders, searchQuery, maxUCIRank);
   };
 
   // Handle team filter changes
   const handleTeamFilterChange = (teams: Set<string>) => {
     setSelectedTeams(teams);
-    applyFilters(selectedRaces, teams, selectedRiders, searchQuery, maxUCIRank);
   };
 
   // Handle rider filter changes
   const handleRiderFilterChange = (riders: Set<string>) => {
     setSelectedRiders(riders);
-    applyFilters(selectedRaces, selectedTeams, riders, searchQuery, maxUCIRank);
   };
 
   // Handle search changes
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
-    applyFilters(
-      selectedRaces,
-      selectedTeams,
-      selectedRiders,
-      query,
-      maxUCIRank,
-    );
   };
 
   // Handle UCI rank filter changes
   const handleUCIRankChange = (rank: number) => {
     setMaxUCIRank(rank);
-    applyFilters(
-      selectedRaces,
-      selectedTeams,
-      selectedRiders,
-      searchQuery,
-      rank,
-    );
+  };
+
+  // Handle remove individual filters from FilterBar
+  const handleRemoveRace = (race: string) => {
+    const newRaces = new Set(selectedRaces);
+    newRaces.delete(race);
+    handleRaceFilterChange(newRaces);
+  };
+
+  const handleRemoveTeam = (team: string) => {
+    const newTeams = new Set(selectedTeams);
+    newTeams.delete(team);
+    handleTeamFilterChange(newTeams);
+  };
+
+  const handleRemoveRider = (rider: string) => {
+    const newRiders = new Set(selectedRiders);
+    newRiders.delete(rider);
+    handleRiderFilterChange(newRiders);
+  };
+
+  const handleClearAllFilters = () => {
+    setSelectedRaces(new Set());
+    setSelectedTeams(new Set());
+    setSelectedRiders(new Set());
+    setMaxUCIRank(2096);
+    setSearchQuery("");
   };
 
   if (loading) {
     return (
-      <div className="container">
-        <p>Loading data...</p>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <p className="text-xl text-gray-600">Loading data...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="container">
-        <p className="error">Error: {error}</p>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <p className="text-xl text-red-600">Error: {error}</p>
       </div>
     );
   }
 
   if (!data) {
     return (
-      <div className="container">
-        <p>No data available</p>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <p className="text-xl text-gray-600">No data available</p>
       </div>
     );
   }
@@ -208,62 +216,87 @@ function App() {
   ).sort();
 
   return (
-    <div className="container">
-      <header>
-        <h1>Cycling Classics Filter</h1>
-        {data &&
-          (() => {
-            const { formatted, isStale } = getFormattedTimestamp(data.updated);
-            return (
-              <p className={`last-updated ${isStale ? "stale" : ""}`}>
-                Data updated: {formatted}
-                {isStale && " ⚠️ (older than 24 hours)"}
-              </p>
-            );
-          })()}
+    <div className="min-h-screen bg-white">
+      <header className="bg-white">
+        <div className="p-6">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Cycling Classics Filter
+          </h1>
+          {data &&
+            (() => {
+              const { formatted, isStale } = getFormattedTimestamp(
+                data.updated,
+              );
+              return (
+                <p
+                  className={`text-sm mt-2 ${isStale ? "text-orange-600" : "text-gray-600"}`}
+                >
+                  Data updated: {formatted}
+                  {isStale && " ⚠️ (older than 24 hours)"}
+                </p>
+              );
+            })()}
+        </div>
       </header>
 
-      <div className="filters-sidebar">
-        <RacesDropdown
-          races={allRaces}
-          selectedRaces={selectedRaces}
-          onRacesChange={handleRaceFilterChange}
-        />
+      <div className="p-6">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-4">
+            <RacesDropdown
+              races={allRaces}
+              selectedRaces={selectedRaces}
+              onRacesChange={handleRaceFilterChange}
+            />
 
-        <RidersFilter
-          riders={data?.riders || []}
-          selectedRiders={selectedRiders}
-          onRidersChange={handleRiderFilterChange}
-        />
+            <RidersFilter
+              riders={data?.riders || []}
+              selectedRiders={selectedRiders}
+              onRidersChange={handleRiderFilterChange}
+            />
 
-        <RiderSearch
-          searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
-        />
+            <RiderSearch
+              searchQuery={searchQuery}
+              onSearchChange={handleSearchChange}
+            />
 
-        {/* <TeamFilter
-           teams={allTeams}
-           selectedTeams={selectedTeams}
-           onTeamsChange={handleTeamFilterChange}
-         />
+            {/* <TeamFilter
+              teams={allTeams}
+              selectedTeams={selectedTeams}
+              onTeamsChange={handleTeamFilterChange}
+            />
 
-         <UCIRankFilter
-           maxRank={maxUCIRank}
-           onRankChange={handleUCIRankChange}
-         /> */}
+            <UCIRankFilter
+              maxRank={maxUCIRank}
+              onRankChange={handleUCIRankChange}
+            /> */}
+          </div>
+
+          <FilterBar
+            selectedRaces={selectedRaces}
+            selectedTeams={selectedTeams}
+            selectedRiders={selectedRiders}
+            maxUCIRank={maxUCIRank}
+            onRemoveRace={handleRemoveRace}
+            onRemoveTeam={handleRemoveTeam}
+            onRemoveRider={handleRemoveRider}
+            onClearAll={handleClearAllFilters}
+          />
+
+          <div className="">
+            <RiderTable
+              riders={filteredRiders}
+              allRaces={allRaces}
+              selectedRaces={selectedRaces}
+            />
+
+            <footer className="mt-8 text-center text-gray-600">
+              <p>
+                Showing {filteredRiders.length} of {data.riders.length} riders
+              </p>
+            </footer>
+          </div>
+        </div>
       </div>
-
-      <RiderTable
-        riders={filteredRiders}
-        allRaces={allRaces}
-        selectedRaces={selectedRaces}
-      />
-
-      <footer>
-        <p>
-          Showing {filteredRiders.length} of {data.riders.length} riders
-        </p>
-      </footer>
     </div>
   );
 }

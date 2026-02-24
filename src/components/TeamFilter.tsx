@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import './TeamFilter.css'
+import { Button } from './ui/button'
+import { Checkbox } from './ui/checkbox'
+import { Label } from './ui/label'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 
 interface TeamFilterProps {
   teams: string[]
@@ -8,8 +10,6 @@ interface TeamFilterProps {
 }
 
 function TeamFilter({ teams, selectedTeams, onTeamsChange }: TeamFilterProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
-
   const handleToggleTeam = (team: string) => {
     const newTeams = new Set(selectedTeams)
     if (newTeams.has(team)) {
@@ -33,50 +33,50 @@ function TeamFilter({ teams, selectedTeams, onTeamsChange }: TeamFilterProps) {
   }
 
   return (
-    <div className="team-filter">
-      <div className="filter-header">
-        <h3>Teams ({selectedTeams.size}/{teams.length})</h3>
-        <button
-          className="expand-toggle"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? '▼' : '▶'}
-        </button>
-      </div>
-
-      {isExpanded && (
-        <>
-          <div className="filter-actions">
-            <button
-              className="action-btn"
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">
+          Teams ({selectedTeams.size}/{teams.length})
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
               onClick={handleSelectAll}
             >
               {selectedTeams.size === teams.length ? 'Deselect All' : 'Select All'}
-            </button>
-            <button
-              className="action-btn clear-btn"
-              onClick={handleClearAll}
-              disabled={selectedTeams.size === 0}
-            >
-              Clear
-            </button>
+            </Button>
+            {selectedTeams.size > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleClearAll}
+              >
+                Clear
+              </Button>
+            )}
           </div>
 
-          <div className="teams-list">
+          <div className="max-h-64 overflow-y-auto space-y-2">
             {teams.map(team => (
-              <label key={team} className="team-checkbox">
-                <input
-                  type="checkbox"
+              <div key={team} className="flex items-center gap-2">
+                <Checkbox
+                  id={`team-${team}`}
                   checked={selectedTeams.has(team)}
-                  onChange={() => handleToggleTeam(team)}
+                  onCheckedChange={() => handleToggleTeam(team)}
                 />
-                <span className="team-name">{team}</span>
-              </label>
+                <Label htmlFor={`team-${team}`} className="cursor-pointer flex-1">
+                  {team}
+                </Label>
+              </div>
             ))}
           </div>
-        </>
-      )}
-    </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   )
 }
 

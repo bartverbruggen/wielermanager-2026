@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import './RacesDropdown.css'
+import { Button } from './ui/button'
+import { Checkbox } from './ui/checkbox'
+import { Label } from './ui/label'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 
 interface RacesDropdownProps {
   races: string[]
@@ -8,8 +10,6 @@ interface RacesDropdownProps {
 }
 
 export default function RacesDropdown({ races, selectedRaces, onRacesChange }: RacesDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false)
-
   const handleRaceToggle = (race: string) => {
     const newSelected = new Set(selectedRaces)
     if (newSelected.has(race)) {
@@ -33,71 +33,50 @@ export default function RacesDropdown({ races, selectedRaces, onRacesChange }: R
   }
 
   return (
-    <div className="races-dropdown">
-      <button
-        className="dropdown-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        Races ({selectedRaces.size})
-        <span className="dropdown-arrow">▼</span>
-      </button>
-
-      {isOpen && (
-        <div className="dropdown-menu">
-          <div className="dropdown-actions">
-            <button
-              className="btn btn-sm btn-secondary"
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="default">
+          Races ({selectedRaces.size})
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
               onClick={handleSelectAll}
             >
               {selectedRaces.size === races.length ? 'Clear All' : 'Select All'}
-            </button>
+            </Button>
             {selectedRaces.size > 0 && (
-              <button
-                className="btn btn-sm btn-secondary"
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={handleClearAll}
               >
                 Clear
-              </button>
+              </Button>
             )}
           </div>
 
-          <div className="dropdown-items">
+          <div className="max-h-64 overflow-y-auto space-y-2">
             {races.map(race => (
-              <label key={race} className="dropdown-item">
-                <input
-                  type="checkbox"
+              <div key={race} className="flex items-center gap-2">
+                <Checkbox
+                  id={`race-dd-${race}`}
                   checked={selectedRaces.has(race)}
-                  onChange={() => handleRaceToggle(race)}
+                  onCheckedChange={() => handleRaceToggle(race)}
                 />
-                <span>{race}</span>
-              </label>
+                <Label htmlFor={`race-dd-${race}`} className="cursor-pointer flex-1">
+                  {race}
+                </Label>
+              </div>
             ))}
           </div>
         </div>
-      )}
-
-      {selectedRaces.size > 0 && (
-        <div className="selected-races">
-          {Array.from(selectedRaces).slice(0, 3).map(race => (
-            <span key={race} className="race-tag">
-              {race}
-              <button
-                className="tag-remove"
-                onClick={() => {
-                  const newSelected = new Set(selectedRaces)
-                  newSelected.delete(race)
-                  onRacesChange(newSelected)
-                }}
-              >
-                ×
-              </button>
-            </span>
-          ))}
-          {selectedRaces.size > 3 && (
-            <span className="race-tag">+{selectedRaces.size - 3} more</span>
-          )}
-        </div>
-      )}
-    </div>
+      </PopoverContent>
+    </Popover>
   )
 }
+

@@ -1,4 +1,7 @@
-import './RaceFilter.css'
+import { Button } from './ui/button'
+import { Checkbox } from './ui/checkbox'
+import { Label } from './ui/label'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 
 interface RaceFilterProps {
   races: string[]
@@ -30,45 +33,50 @@ export default function RaceFilter({ races, selectedRaces, onRacesChange }: Race
   }
 
   return (
-    <div className="race-filter">
-      <div className="filter-header">
-        <h2>Filter by Races</h2>
-        <div className="filter-actions">
-          <button 
-            className="btn btn-secondary" 
-            onClick={handleSelectAll}
-          >
-            {selectedRaces.size === races.length ? 'Clear All' : 'Select All'}
-          </button>
-          {selectedRaces.size > 0 && (
-            <button 
-              className="btn btn-secondary" 
-              onClick={handleClearAll}
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline">
+          Races ({selectedRaces.size}/{races.length})
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleSelectAll}
             >
-              Clear Selection
-            </button>
-          )}
-        </div>
-      </div>
+              {selectedRaces.size === races.length ? 'Clear All' : 'Select All'}
+            </Button>
+            {selectedRaces.size > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleClearAll}
+              >
+                Clear
+              </Button>
+            )}
+          </div>
 
-      <div className="races-grid">
-        {races.map(race => (
-          <label key={race} className="race-checkbox">
-            <input
-              type="checkbox"
-              checked={selectedRaces.has(race)}
-              onChange={() => handleRaceToggle(race)}
-            />
-            <span>{race}</span>
-          </label>
-        ))}
-      </div>
-
-      {selectedRaces.size > 0 && (
-        <div className="filter-status">
-          <p>Filtering by {selectedRaces.size} race{selectedRaces.size !== 1 ? 's' : ''}</p>
+          <div className="max-h-64 overflow-y-auto space-y-2">
+            {races.map(race => (
+              <div key={race} className="flex items-center gap-2">
+                <Checkbox
+                  id={`race-${race}`}
+                  checked={selectedRaces.has(race)}
+                  onCheckedChange={() => handleRaceToggle(race)}
+                />
+                <Label htmlFor={`race-${race}`} className="cursor-pointer flex-1">
+                  {race}
+                </Label>
+              </div>
+            ))}
+          </div>
         </div>
-      )}
-    </div>
+      </PopoverContent>
+    </Popover>
   )
 }
+

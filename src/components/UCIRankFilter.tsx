@@ -1,4 +1,5 @@
-import './UCIRankFilter.css'
+import { Button } from './ui/button'
+import { Slider } from './ui/slider'
 
 interface UCIRankFilterProps {
   maxRank: number
@@ -6,8 +7,8 @@ interface UCIRankFilterProps {
 }
 
 function UCIRankFilter({ maxRank, onRankChange }: UCIRankFilterProps) {
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onRankChange(parseInt(e.target.value, 10))
+  const handleSliderChange = (values: number[]) => {
+    onRankChange(values[0])
   }
 
   const handleReset = () => {
@@ -25,41 +26,44 @@ function UCIRankFilter({ maxRank, onRankChange }: UCIRankFilterProps) {
   ]
 
   return (
-    <div className="uci-rank-filter">
-      <div className="filter-header">
-        <h3>UCI Rank Filter</h3>
+    <div className="bg-white p-5 rounded-lg shadow mb-7">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="m-0 text-lg font-semibold">UCI Rank Filter</h3>
         {maxRank < 2096 && (
-          <button className="reset-btn" onClick={handleReset}>
+          <Button variant="outline" size="sm" onClick={handleReset}>
             Reset
-          </button>
+          </Button>
         )}
       </div>
 
-      <div className="rank-display">
-        <span className="rank-label">Max Rank:</span>
-        <span className="rank-value">
+      <div className="mb-4 p-3 bg-gray-50 rounded">
+        <span className="text-sm text-gray-600">Max Rank:</span>
+        <span className="ml-2 font-semibold text-lg">
           {maxRank === 2096 ? 'All Riders' : `#${maxRank}`}
         </span>
       </div>
 
-      <input
-        type="range"
-        min="1"
-        max="2096"
-        value={maxRank}
-        onChange={handleSliderChange}
-        className="rank-slider"
-      />
+      <div className="mb-6 px-2">
+        <Slider
+          min={1}
+          max={2096}
+          step={1}
+          value={[maxRank]}
+          onValueChange={handleSliderChange}
+          className="w-full"
+        />
+      </div>
 
-      <div className="preset-buttons">
+      <div className="flex flex-wrap gap-2">
         {presets.map(preset => (
-          <button
+          <Button
             key={preset.value}
-            className={`preset-btn ${maxRank === preset.value ? 'active' : ''}`}
+            variant={maxRank === preset.value ? 'default' : 'outline'}
+            size="sm"
             onClick={() => onRankChange(preset.value)}
           >
             {preset.label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>
