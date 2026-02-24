@@ -30,9 +30,10 @@ interface RiderTableProps {
 // Memoize the table header component
 const TableHeader = memo(({ headerGroup }: { headerGroup: any }) => (
   <tr>
-    {headerGroup.headers.map((header: any) => {
+    {headerGroup.headers.map((header: any, idx: number) => {
       const isSorted = header.column.getIsSorted();
       const canSort = header.column.getCanSort();
+      const isFirstColumn = idx === 0;
       return (
         <th
           key={header.id}
@@ -40,7 +41,7 @@ const TableHeader = memo(({ headerGroup }: { headerGroup: any }) => (
           style={{ width: `${header.getSize()}px` }}
           className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 ${
             canSort ? "cursor-pointer hover:bg-gray-200" : ""
-          }`}
+          } ${isFirstColumn ? "sticky left-0 z-20 bg-gray-100" : ""}`}
         >
           <div className="flex items-center gap-2">
             {flexRender(header.column.columnDef.header, header.getContext())}
@@ -64,15 +65,18 @@ const TableRow = memo(({ row, idx }: { row: any; idx: number }) => (
   <tr
     className={`border-b border-gray-200 ${idx % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50`}
   >
-    {row.getVisibleCells().map((cell: any) => (
-      <td
-        key={cell.id}
-        style={{ width: `${cell.column.getSize()}px` }}
-        className={`px-4 py-3 text-sm h-14`}
-      >
-        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-      </td>
-    ))}
+    {row.getVisibleCells().map((cell: any, cellIdx: number) => {
+      const isFirstColumn = cellIdx === 0;
+      return (
+        <td
+          key={cell.id}
+          style={{ width: `${cell.column.getSize()}px` }}
+          className={`px-4 py-3 text-sm h-14 ${isFirstColumn ? "sticky left-0 z-10 bg-inherit" : ""}`}
+        >
+          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        </td>
+      );
+    })}
   </tr>
 ));
 
@@ -191,8 +195,8 @@ export default function RiderTable({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden flex flex-col h-[600px]">
-      <div ref={tableContainerRef} className="overflow-auto flex-grow">
+    <div className="bg-white rounded-lg shadow overflow-hidden flex flex-col">
+      <div ref={tableContainerRef} className="overflow-auto grow">
         <table
           className="w-full border-collapse"
           style={{ width: `${totalWidth}px` }}
