@@ -61,10 +61,10 @@ function App() {
    }
 
   // Load riders data
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch('/data/riders.json')
+   useEffect(() => {
+     const loadData = async () => {
+       try {
+         const response = await fetch(`${import.meta.env.BASE_URL}data/riders.json`)
         if (!response.ok) throw new Error('Failed to load riders data')
         const jsonData: Data = await response.json()
         setData(jsonData)
