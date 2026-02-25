@@ -3,34 +3,35 @@ name: Update Race Data
 on:
   schedule:
     # Run every night at 2 AM UTC
-    - cron: '0 2 * * *'
-  
+    - cron: "0 2 * * *"
+
   # Allow manual triggering
   workflow_dispatch:
 
 jobs:
   scrape-races:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+          token: ${{ secrets.PAT_TOKEN }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
-      
+
       - name: Run scraper
         run: python3 scraper.py
-      
+
       - name: Check if data changed
         id: check_changes
         run: |
@@ -39,7 +40,7 @@ jobs:
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Commit and push changes
         if: steps.check_changes.outputs.changed == 'true'
         run: |
@@ -48,8 +49,7 @@ jobs:
           git add data/riders.json
           git commit -m "Update race data from scraper [skip ci]"
           git push
-      
+
       - name: No changes
         if: steps.check_changes.outputs.changed == 'false'
         run: echo "No changes detected in race data"
-
