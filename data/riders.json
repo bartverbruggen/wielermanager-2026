@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-25T08:30:36.056679Z",
+  "updated": "2026-02-25T10:03:44.448187Z",
   "riders": [
     {
       "name": "POGAČAR Tadej",
@@ -81,7 +81,14 @@
       "pcs_recent_per_m": 115.8,
       "uci_per_m": 274.1,
       "wm_weighted": 405.4,
-      "races": []
+      "races": [
+        "Omloop Nieuwsblad",
+        "Milaan-Sanremo",
+        "E3 Saxo Classic",
+        "In Flanders Fields",
+        "Ronde van Vlaanderen",
+        "Parijs-Roubaix"
+      ]
     },
     {
       "name": "EVENEPOEL Remco",
@@ -31409,7 +31416,9 @@
       "pcs_recent_per_m": 45.5,
       "uci_per_m": 21.0,
       "wm_weighted": 11.1,
-      "races": []
+      "races": [
+        "Omloop Nieuwsblad"
+      ]
     },
     {
       "name": "REINDERS Elmar",
