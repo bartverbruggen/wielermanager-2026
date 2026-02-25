@@ -184,55 +184,52 @@ def scrape_race_startlist(race_url: str, year: str = "2026"):
     return None
 
 def scrape_race_details(race_url: str, year: str = "2026") -> Optional[Dict]:
-     """
-     Scrape race details including start date and UCI classification from race page.
-     Returns dict with 'start_date' and 'is_uci_wt' keys.
-     """
-     # Build race URL if needed
-     if 'procyclingstats.com' not in race_url:
-         race_url = 'https://www.procyclingstats.com' + race_url
-     
-     # Try to get race page (without /startlist)
-     base_url = race_url.split('/race/')[0]
-     race_slug = race_url.split('/race/')[-1].split('/')[0]
-     race_page_url = f"{base_url}/race/{race_slug}/{year}/"
-     
-     try:
-         content = fetch_url_with_retry(race_page_url)
-         if content is None:
-             return None
-         
-         soup = BeautifulSoup(content, 'html.parser')
-         
-         # Extract start date
-         start_date = None
-         date_pattern = re.compile(r'(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December))\s+(\d{4})')
-         
-         # Look for date in common locations
-         page_text = soup.get_text()
-         date_match = date_pattern.search(page_text)
-         if date_match:
-             start_date = date_match.group(1)
-         
-         # Check for UCI WorldTour classification
-         is_uci_wt = False
-         page_html = str(soup)
-         # Look for UCI classification indicators
-         if 'uci worldtour' in page_html.lower() or 'uci wt' in page_html.lower():
-             is_uci_wt = True
-         
-         # Also check for specific championship indicators
-         if 'world championship' in page_html.lower() or 'worlds' in page_html.lower():
-             is_uci_wt = True
-         
-         return {
-             'start_date': start_date,
-             'is_uci_wt': is_uci_wt
-         }
-     
-     except Exception as e:
-         logger.warning(f"Failed to scrape race details from {race_page_url}: {e}")
-         return None
+      """
+      Scrape race details including start date and UCI classification from race page.
+      Returns dict with 'start_date' and 'is_uci_wt' keys.
+      """
+      # Build race URL if needed
+      if 'procyclingstats.com' not in race_url:
+          race_url = 'https://www.procyclingstats.com' + race_url
+      
+      # Try to get race page (without /startlist)
+      base_url = race_url.split('/race/')[0]
+      race_slug = race_url.split('/race/')[-1].split('/')[0]
+      race_page_url = f"{base_url}/race/{race_slug}/{year}/"
+      
+      try:
+          content = fetch_url_with_retry(race_page_url)
+          if content is None:
+              return None
+          
+          soup = BeautifulSoup(content, 'html.parser')
+          
+          # Extract start date
+          start_date = None
+          date_pattern = re.compile(r'(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December))\s+(\d{4})')
+          
+          # Look for date in common locations
+          page_text = soup.get_text()
+          date_match = date_pattern.search(page_text)
+          if date_match:
+              start_date = date_match.group(1)
+          
+          # Check for UCI WorldTour classification by looking for "Classification: 1.UWT"
+          is_uci_wt = False
+          
+          # Look for the classification line in the page text
+          classification_pattern = re.compile(r'Classification:\s*1\.UWT', re.IGNORECASE)
+          if classification_pattern.search(page_text):
+              is_uci_wt = True
+          
+          return {
+              'start_date': start_date,
+              'is_uci_wt': is_uci_wt
+          }
+      
+      except Exception as e:
+          logger.warning(f"Failed to scrape race details from {race_page_url}: {e}")
+          return None
 
 def load_races(races_file: str):
      """Load races from races.json."""
