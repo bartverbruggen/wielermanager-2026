@@ -68,45 +68,39 @@ function App() {
     }
   };
 
-  // Load riders data and race metadata
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.BASE_URL}data/riders.json`,
-        );
-        if (!response.ok) throw new Error("Failed to load riders data");
-        const jsonData: Data = await response.json();
-        setData(jsonData);
+   // Load riders data and extract race metadata
+   useEffect(() => {
+     const loadData = async () => {
+       try {
+         const response = await fetch(
+           `${import.meta.env.BASE_URL}data/riders.json`,
+         );
+         if (!response.ok) throw new Error("Failed to load riders data");
+         const jsonData: Data = await response.json();
+         setData(jsonData);
 
-        // Load race metadata from races.json
-        const racesResponse = await fetch(
-          `${import.meta.env.BASE_URL}data/races.json`,
-        );
-        if (racesResponse.ok) {
-          const racesData = await racesResponse.json();
-          const metadata: Record<string, any> = {};
-          if (racesData.races) {
-            racesData.races.forEach((race: any) => {
-              metadata[race.name] = {
-                name: race.name,
-                start_date: race.start_date || null,
-                is_uci_wt: race.is_uci_wt || false,
-              };
-            });
-          }
-          setRaceMetadata(metadata);
-        }
+         // Extract race metadata from riders.json races array
+         const metadata: Record<string, any> = {};
+         if (jsonData.races) {
+           jsonData.races.forEach((race: any) => {
+             metadata[race.name] = {
+               name: race.name,
+               start_date: race.start_date || null,
+               is_uci_wt: race.is_uci_wt || false,
+             };
+           });
+         }
+         setRaceMetadata(metadata);
 
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-        setLoading(false);
-      }
-    };
+         setLoading(false);
+       } catch (err) {
+         setError(err instanceof Error ? err.message : "Unknown error");
+         setLoading(false);
+       }
+     };
 
-    loadData();
-  }, []);
+     loadData();
+   }, []);
 
   // Apply all filters in a single pass for better performance
   const filteredRiders = useMemo(() => {
