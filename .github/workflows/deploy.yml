@@ -44,7 +44,7 @@ jobs:
         run: mkdir -p public/data
 
       - name: Copy data files to public directory
-        run: cp data/riders.json data/races.json public/data/
+        run: cp data/riders.json public/data/
 
       - name: Build app
         run: npm run build
