@@ -206,13 +206,13 @@ def scrape_race_details(race_url: str, year: str = "2026") -> Optional[Dict]:
           
           # Extract start date
           start_date = None
-          date_pattern = re.compile(r'(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December))\s+(\d{4})')
-          
-          # Look for date in common locations
           page_text = soup.get_text()
-          date_match = date_pattern.search(page_text)
-          if date_match:
-              start_date = date_match.group(1)
+          
+          # Look for ISO format date (YYYY-MM-DD) in "Startdate:" line
+          startdate_pattern = re.compile(r'Startdate:\s*(\d{4}-\d{2}-\d{2})')
+          startdate_match = startdate_pattern.search(page_text)
+          if startdate_match:
+              start_date = startdate_match.group(1)
           
           # Check for UCI WorldTour classification by looking for "Classification: 1.UWT"
           is_uci_wt = False
